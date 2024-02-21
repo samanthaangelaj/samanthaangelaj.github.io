@@ -79,15 +79,15 @@ function loadScene()
     scene.add(sphere); 
 
     const geometry3 = new THREE.CylinderGeometry(2,3,1); 
-    const cylinder = new THREE.Mesh(geometry3, material); 
+    const cylinder = new THREE.Mesh(geometry3, materialforms); 
     scene.add(cylinder); 
 
     const geometry4 = new THREE.BoxGeometry(2,2,2); 
-    const box = new THREE.Mesh(geometry4, material); 
+    const box = new THREE.Mesh(geometry4, materialforms); 
     scene.add(box); 
 
     const geometry5 = new THREE.DodecahedronGeometry(2,4,3,1); 
-    const dodeca = new THREE.Mesh(geometry5, material); 
+    const dodeca = new THREE.Mesh(geometry5, materialforms); 
     scene.add(dodeca); 
 
     /*******************
