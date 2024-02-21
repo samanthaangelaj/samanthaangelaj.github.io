@@ -60,7 +60,7 @@ function loadScene()
     *******************/
 
     const floor = new THREE.MeshNormalMaterial(new THREE.CircleGeometry(10,40), materialfloor);
-    floor.rotation.x = -Math.PI/3
+    //floor.rotation.x = -Math.PI/3
     scene.add(floor); 
 
     /*******************
@@ -68,7 +68,7 @@ function loadScene()
     * en los cinco vertices de un pentagono regular alredor del origen
     *******************/
     
-    const materialforms = new THREE.MeshNormalMaterial();
+    const materialforms = new THREE.MeshBasicMaterial({color:'pink',wireframe:true});
 
     const geometry1 = new THREE.CylinderGeometry(0, radius, height, 4, 1)
     const pyramid = new THREE.Mesh(geometry1, materialforms);
