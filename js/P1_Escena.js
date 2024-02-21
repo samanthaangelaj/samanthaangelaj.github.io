@@ -99,7 +99,7 @@ function loadScene()
     glloader.load('models/palminpot/scene.gltf', function(gltf) {
         gltf.scene.position.y = 1;
         gltf.scene.rotation.y = -Math.PI/2;
-        sphere.add( gltf.scene );
+        floor.add( gltf.scene );
         console.log("PALM");
         console.log(gltf);
     }, undefined, function ( error ) {
