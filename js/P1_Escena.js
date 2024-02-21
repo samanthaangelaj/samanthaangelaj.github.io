@@ -43,7 +43,7 @@ function init()
    
     // Escena
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(5,2,1) //Blue/turqoise 
+    scene.background = new THREE.Color(blue) //Blue/turqoise 
     
     // Camara
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1,1000);
@@ -94,6 +94,20 @@ function loadScene()
     * TO DO: Añadir a la escena un modelo importado en el centro del pentagono
     *******************/
 
+    const glloader = new THREE.GLTFLoader(); 
+
+    glloader.load('models/palminpot/scene.gltf'), function(gltf) {
+        gltf.scene.position.y = 1;
+        gltf.scene.rotation.y = -Math.PI/2;
+       //esfera.add( gltf.scene );
+        console.log("PALM");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } ;
+    
     //Tree, cocunut pero no esta funcionando hacer una cuenta en clara.io
 
     /*******************
