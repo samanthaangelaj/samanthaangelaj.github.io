@@ -35,10 +35,11 @@ function init()
     /*******************
     * TO DO: Completar el motor de render y el canvas
     *******************/
-
+    //document.getElementById('container').appendChild( renderer.domElement );
+   
     // Escena
     scene = new THREE.Scene();
-    scene. background = new THREE.Color(95,242,242) //Blue/turqoise 
+    scene.background = new THREE.Color(95,242,242) //Blue/turqoise 
     
     // Camara
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1,1000);
@@ -62,7 +63,7 @@ function loadScene()
     * TO DO: Construir una escena con 5 figuras diferentes posicionadas
     * en los cinco vertices de un pentagono regular alredor del origen
     *******************/
-    
+
     /*******************
     * TO DO: Añadir a la escena un modelo importado en el centro del pentagono
     *******************/
