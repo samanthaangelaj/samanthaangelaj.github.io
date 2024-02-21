@@ -74,7 +74,7 @@ function loadScene()
     const pyramid = new THREE.Mesh(geometry1, materialforms);
     scene.add(pyramid);
 
-    const geometry2 = new THREE.SphereGeometry(1,20,20);
+    const geometry2 = new THREE.SphereGeometry(1,5,5);
     const sphere = new THREE.Mesh(geometry2, materialforms); 
     scene.add(sphere); 
 
@@ -86,7 +86,7 @@ function loadScene()
     const box = new THREE.Mesh(geometry4, materialforms); 
     scene.add(box); 
 
-    const geometry5 = new THREE.DodecahedronGeometry(2,4,3,1); 
+    const geometry5 = new THREE.DodecahedronGeometry(2,1,2,1); 
     const dodeca = new THREE.Mesh(geometry5, materialforms); 
     scene.add(dodeca); 
 
