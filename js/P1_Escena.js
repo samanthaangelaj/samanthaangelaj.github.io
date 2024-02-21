@@ -70,7 +70,7 @@ function loadScene()
     
     const materialforms = new THREE.MeshBasicMaterial({color:'pink',wireframe:true});
 
-    const geometry1 = new THREE.CylinderGeometry(0, radius, height, 4, 1)
+    const geometry1 = new THREE.CylinderGeometry(0, 1, 2, 4, 1)
     const pyramid = new THREE.Mesh(geometry1, materialforms);
     scene.add(pyramid);
 
@@ -78,7 +78,7 @@ function loadScene()
     const sphere = new THREE.Mesh(geometry2, materialforms); 
     scene.add(sphere); 
 
-    const geometry3 = new THREE.CylinderGeometry(); 
+    const geometry3 = new THREE.CylinderGeometry(2,3,1); 
     const cylinder = new THREE.Mesh(geometry3, material); 
     scene.add(cylinder); 
 
@@ -86,7 +86,7 @@ function loadScene()
     const box = new THREE.Mesh(geometry4, material); 
     scene.add(box); 
 
-    const geometry5 = new THREE.DodecahedronGeometry(); 
+    const geometry5 = new THREE.DodecahedronGeometry(2,4,3,1); 
     const dodeca = new THREE.Mesh(geometry5, material); 
     scene.add(dodeca); 
 
