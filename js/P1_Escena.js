@@ -60,7 +60,7 @@ function loadScene()
     *******************/
 
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(10,10,10,10), materialfloor);
-    //floor.rotation.x = -Math.PI/3
+    floor.rotation.x = -Math.PI/2
     scene.add(floor); 
 
     /*******************
