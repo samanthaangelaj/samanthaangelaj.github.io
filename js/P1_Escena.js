@@ -43,7 +43,7 @@ function init()
    
     // Escena
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(95,242,242) //Blue/turqoise 
+    scene.background = new THREE.Color(5,2,1) //Blue/turqoise 
     
     // Camara
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1,1000);
@@ -103,11 +103,11 @@ function loadScene()
     fiveforms = new THREE.Object3D(); 
     fiveforms.position.y = 1.0;
 
-    pyramid.position.y = 1;
-    sphere.position.y = 2;
-    cylinder.position.y = 3;
-    box.position.y = 1,5;
-    dodeca.position.y = 5;
+    pyramid.position.x = 1;
+    sphere.position.x = 2;
+    cylinder.position.x = 3;
+    box.position.x = -1;
+    dodeca.position.x = -2;
 
     box.add(new THREE.AxesHelper(1)); 
 
