@@ -102,7 +102,7 @@ function loadScene()
 
     fiveforms = new THREE.Object3D(); 
     fiveforms.position.y = 1.0;
-    
+
     pyramid.position.y = 1;
     sphere.position.y = 2;
     cylinder.position.y = 3;
@@ -112,7 +112,7 @@ function loadScene()
     box.add(new THREE.AxesHelper(1)); 
 
     scene.add(fiveforms); 
-    fiveforms.add(pyramid,spehere,cylinder,box,dodeca); 
+    fiveforms.add(pyramid,sphere,cylinder,box,dodeca); 
 
     scene.add(new THREE.AxesHelper(5));
 
