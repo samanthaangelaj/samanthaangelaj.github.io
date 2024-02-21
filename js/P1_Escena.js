@@ -96,7 +96,7 @@ function loadScene()
 
     const glloader = new THREE.GLTFLoader(); 
 
-    glloader.load('models/palminpot/scene.gltf'), function(gltf) {
+    glloader.load('models/palminpot/scene.gltf', function(gltf) {
         gltf.scene.position.y = 1;
         gltf.scene.rotation.y = -Math.PI/2;
         sphere.add( gltf.scene );
@@ -106,7 +106,7 @@ function loadScene()
     
         console.error( error );
     
-    } ;
+    } );
 
     /*******************
     * TO DO: Añadir a la escena unos ejes
