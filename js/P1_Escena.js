@@ -59,7 +59,7 @@ function loadScene()
     * TO DO: Construir un suelo en el plano XZ
     *******************/
 
-    const floor = new THREE.MeshNormalMaterial(new THREE.CircleGeometry(10,40), materialfloor);
+    const floor = new THREE.MeshNormalMaterial(new THREE.PlaneGeometry(10,10,10,10), materialfloor);
     //floor.rotation.x = -Math.PI/3
     scene.add(floor); 
 
