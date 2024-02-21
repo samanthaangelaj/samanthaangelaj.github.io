@@ -99,7 +99,7 @@ function loadScene()
     glloader.load('models/palminpot/scene.gltf'), function(gltf) {
         gltf.scene.position.y = 1;
         gltf.scene.rotation.y = -Math.PI/2;
-       //esfera.add( gltf.scene );
+        sphere.add( gltf.scene );
         console.log("PALM");
         console.log(gltf);
     }, undefined, function ( error ) {
@@ -107,8 +107,6 @@ function loadScene()
         console.error( error );
     
     } ;
-    
-    //Tree, cocunut pero no esta funcionando hacer una cuenta en clara.io
 
     /*******************
     * TO DO: Añadir a la escena unos ejes
