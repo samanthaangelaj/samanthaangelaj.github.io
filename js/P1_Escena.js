@@ -38,6 +38,7 @@ function init()
 
     // Escena
     scene = new THREE.Scene();
+    scene. background = new THREE.Color(95,242,242) //Blue/turqoise 
     
     // Camara
     camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1,1000);
@@ -47,17 +48,21 @@ function init()
 
 function loadScene()
 {
-    const material = new THREE.MeshNormalMaterial( );
+    const material = new THREE.MeshNormalMaterial({color: 'green', wireframe: true} );
 
     /*******************
     * TO DO: Construir un suelo en el plano XZ
     *******************/
 
+    const floor = new THREE.MeshNormalMaterial(new THREE.CircleGeometry(10,40), material);
+    floor.rotation.x = -Math.PI/3
+    scene.add(floor); 
+
     /*******************
     * TO DO: Construir una escena con 5 figuras diferentes posicionadas
     * en los cinco vertices de un pentagono regular alredor del origen
     *******************/
-
+    
     /*******************
     * TO DO: Añadir a la escena un modelo importado en el centro del pentagono
     *******************/
