@@ -49,7 +49,7 @@ function init()
 
 function loadScene()
 {
-    const material = new THREE.MeshNormalMaterial({color: 'green', wireframe: true} );
+    const material = new THREE.MeshBasicMaterial({color: 'green', wireframe: true} );
 
     /*******************
     * TO DO: Construir un suelo en el plano XZ
