@@ -45,10 +45,10 @@ function loadScene() {
 
     const geoEsfera = new THREE.SphereGeometry(1, 20, 20);
     const esfera = new THREE.Mesh(geoEsfera, material);
-    esfera.position.y = 2; // Move the sphere above the floor
+    esfera.position.set(0, 3, 0); // Move the sphere above the floor
 
     // Suelo
-    const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 10, 10), material);
+    const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 40, 40), material); // Increase segments for smoother appearance
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo);
 
@@ -71,14 +71,15 @@ function render() {
 // Function to create a rounded floor geometry
 function roundedFloorGeometry(width, height, widthSegments, heightSegments) {
     const geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
-    // Check if geometry has vertices
-    if (geometry.vertices) {
-        // Round the vertices
-        geometry.vertices.forEach(vertex => {
-            vertex.z = Math.sin(vertex.x * 0.5) * Math.cos(vertex.y * 0.5) * 0.2; // Adjust the rounding factor here
-        });
-        geometry.computeFaceNormals();
-        geometry.computeVertexNormals();
-    }
+    // Round the vertices
+    geometry.vertices.forEach(vertex => {
+        const dist = Math.sqrt(vertex.x * vertex.x + vertex.y * vertex.y); // Calculate distance from center
+        const maxDist = Math.sqrt(2 * width * width + 2 * height * height); // Calculate max distance
+        const ratio = dist / maxDist; // Calculate ratio
+        vertex.z = Math.sin(ratio * Math.PI) * 0.5; // Apply sinusoidal function for rounding
+    });
+    geometry.computeFaceNormals();
+    geometry.computeVertexNormals();
     return geometry;
 }
+
