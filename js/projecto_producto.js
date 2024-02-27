@@ -32,7 +32,7 @@ function init() {
 
     // Escena
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    scene.background = new THREE.Color(135, 206, 250);
 
     // Camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -44,8 +44,7 @@ function loadScene() {
     const material = new THREE.MeshBasicMaterial({ color:0xffff00,  side: THREE.DoubleSide });
 
     // Suelo
-    const suelo = new THREE.CircleGeometry(10, 20); // Increase segments for smoother appearance
-    suelo.rotation = -Math.PI / 2;
+    const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
     const circle = new THREE.Mesh(suelo, material);
     scene.add(circle);
 
