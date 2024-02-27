@@ -48,16 +48,19 @@ function loadScene() {
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo);
 
-    // Add random spheres
+    // Add random spheres above the floor
     const numSpheres = 5;
+    const minSize = 0.5;
+    const maxSize = 1.5;
+    const floorHeight = 0.5;
     for (let i = 0; i < numSpheres; i++) {
-        const sphereSize = Math.random() * 1.5 + 0.5; // Random size between 0.5 and 2
+        const sphereSize = Math.random() * (maxSize - minSize) + minSize; // Random size between minSize and maxSize
         const sphereColor = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
         const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor }));
         const randomX = Math.random() * 10 - 5; // Random x position between -5 and 5
         const randomZ = Math.random() * 10 - 5; // Random z position between -5 and 5
-        esfera.position.set(randomX, sphereSize / 2, randomZ); // Set position above the floor
+        esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
 
