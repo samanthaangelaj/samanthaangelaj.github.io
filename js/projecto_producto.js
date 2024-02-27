@@ -41,7 +41,7 @@ function init() {
 }
 
 function loadScene() {
-    const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side:THREE.DoubleSide });
+    const material = new THREE.MeshBasicMaterial({ color:blue, side:THREE.DoubleSide });
 
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 20); // Increase segments for smoother appearance
