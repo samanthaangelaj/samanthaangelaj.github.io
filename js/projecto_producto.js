@@ -71,15 +71,18 @@ function render() {
 // Function to create a rounded floor geometry
 function roundedFloorGeometry(width, height, widthSegments, heightSegments) {
     const geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
-    // Round the vertices
-    geometry.vertices.forEach(vertex => {
-        const dist = Math.sqrt(vertex.x * vertex.x + vertex.y * vertex.y); // Calculate distance from center
-        const maxDist = Math.sqrt(2 * width * width + 2 * height * height); // Calculate max distance
-        const ratio = dist / maxDist; // Calculate ratio
-        vertex.z = Math.sin(ratio * Math.PI) * 0.5; // Apply sinusoidal function for rounding
-    });
-    geometry.computeFaceNormals();
-    geometry.computeVertexNormals();
+    if (geometry && geometry.vertices) { // Check if geometry and its vertices are valid
+        // Round the vertices
+        geometry.vertices.forEach(vertex => {
+            const dist = Math.sqrt(vertex.x * vertex.x + vertex.y * vertex.y); // Calculate distance from center
+            const maxDist = Math.sqrt(2 * width * width + 2 * height * height); // Calculate max distance
+            const ratio = dist / maxDist; // Calculate ratio
+            vertex.z = Math.sin(ratio * Math.PI) * 0.5; // Apply sinusoidal function for rounding
+        });
+        geometry.computeFaceNormals();
+        geometry.computeVertexNormals();
+    }
     return geometry;
 }
+
 
