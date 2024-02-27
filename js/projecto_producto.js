@@ -16,7 +16,6 @@
 let renderer, scene, camera;
 
 // Otras globales
-let esferaCubo;
 let angulo = 0;
 
 // Acciones
@@ -37,68 +36,30 @@ function init() {
 
     // Camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0.5, 2, 7);
-    camera.lookAt(new THREE.Vector3(0, 1, 0));
+    camera.position.set(0, 5, 10);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
 function loadScene() {
     const material = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
 
-    const geoCubo = new THREE.BoxGeometry(2, 2, 2);
     const geoEsfera = new THREE.SphereGeometry(1, 20, 20);
-
-    const cubo = new THREE.Mesh(geoCubo, material);
     const esfera = new THREE.Mesh(geoEsfera, material);
+    esfera.position.y = 2; // Move the sphere above the floor
 
     // Suelo
     const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 10, 10), material);
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo);
 
-    // Importar un modelo en json
-    const loader = new THREE.ObjectLoader();
-
-    loader.load('models/soldado/soldado.json',
-        function(objeto) {
-            cubo.add(objeto);
-            objeto.position.y = 1;
-        }
-    );
-
-    // Importar un modelo en gltf
-    const glloader = new THREE.GLTFLoader();
-
-    glloader.load('models/RobotExpressive.glb', function(gltf) {
-        gltf.scene.position.y = 1;
-        gltf.scene.rotation.y = -Math.PI / 2;
-        esfera.add(gltf.scene);
-        console.log("ROBOT");
-        console.log(gltf);
-
-    }, undefined, function(error) {
-
-        console.error(error);
-
-    });
-
-    esferaCubo = new THREE.Object3D();
-    esferaCubo.position.y = 1.5;
-    cubo.position.x = -1;
-    esfera.position.x = 1;
-    cubo.add(new THREE.AxesHelper(1));
-
-    scene.add(esferaCubo);
-    esferaCubo.add(cubo);
-    esferaCubo.add(esfera);
-
+    scene.add(esfera);
 
     scene.add(new THREE.AxesHelper(3));
-
 }
 
 function update() {
     angulo += 0.01;
-    esferaCubo.rotation.y = angulo;
+    // No need to rotate anything
 }
 
 function render() {
@@ -110,11 +71,14 @@ function render() {
 // Function to create a rounded floor geometry
 function roundedFloorGeometry(width, height, widthSegments, heightSegments) {
     const geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
-    // Round the vertices
-    geometry.vertices.forEach(vertex => {
-        vertex.z = Math.sin(vertex.x * 0.5) * Math.cos(vertex.y * 0.5) * 0.2; // Adjust the rounding factor here
-    });
-    geometry.computeFaceNormals();
-    geometry.computeVertexNormals();
+    // Check if geometry has vertices
+    if (geometry.vertices) {
+        // Round the vertices
+        geometry.vertices.forEach(vertex => {
+            vertex.z = Math.sin(vertex.x * 0.5) * Math.cos(vertex.y * 0.5) * 0.2; // Adjust the rounding factor here
+        });
+        geometry.computeFaceNormals();
+        geometry.computeVertexNormals();
+    }
     return geometry;
 }
