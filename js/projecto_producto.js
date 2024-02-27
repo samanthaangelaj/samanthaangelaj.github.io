@@ -41,12 +41,13 @@ function init() {
 }
 
 function loadScene() {
-    const material = new THREE.MeshBasicMaterial({ wireframe: false });
+    const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side:THREE.DoubleSide });
 
     // Suelo
-    const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 40, 40), material); // Increase segments for smoother appearance
+    const suelo = new THREE.CircleGeometry(40, 20); // Increase segments for smoother appearance
     suelo.rotation.x = -Math.PI / 2;
-    scene.add(suelo);
+    const circle = new THREE.Mesh(suelo, material);
+    scene.add(circle);
 
     // Add random spheres above the floor
     const numSpheres = 5;
@@ -76,23 +77,6 @@ function render() {
     requestAnimationFrame(render);
     update();
     renderer.render(scene, camera);
-}
-
-// Function to create a rounded floor geometry
-function roundedFloorGeometry(width, height, widthSegments, heightSegments) {
-    const geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
-    if (geometry && geometry.vertices) { // Check if geometry and its vertices are valid
-        // Round the vertices
-        geometry.vertices.forEach(vertex => {
-            const dist = Math.sqrt(vertex.x * vertex.x + vertex.y * vertex.y); // Calculate distance from center
-            const maxDist = Math.sqrt(2 * width * width + 2 * height * height); // Calculate max distance
-            const ratio = dist / maxDist; // Calculate ratio
-            vertex.z = Math.sin(ratio * Math.PI) * 0.5; // Apply sinusoidal function for rounding
-        });
-        geometry.computeFaceNormals();
-        geometry.computeVertexNormals();
-    }
-    return geometry;
 }
 
 
