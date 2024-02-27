@@ -24,90 +24,97 @@ init();
 loadScene();
 render();
 
-function init()
-{
+function init() {
     // Motor de render
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setSize(window.innerWidth, window.innerHeight);
     //renderer.setClearColor( new THREE.Color(0x0000AA) );
-    document.getElementById('container').appendChild( renderer.domElement );
+    document.getElementById('container').appendChild(renderer.domElement);
 
     // Escena
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0.5,0.5,0.5);
+    scene.background = new THREE.Color(0.5, 0.5, 0.5);
 
     // Camara
-    camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1,1000);
-    camera.position.set( 0.5, 2, 7 );
-    camera.lookAt( new THREE.Vector3(0,1,0) );
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0.5, 2, 7);
+    camera.lookAt(new THREE.Vector3(0, 1, 0));
 }
 
-function loadScene()
-{
-    const material = new THREE.MeshBasicMaterial( { color: 'yellow', wireframe: true } );
+function loadScene() {
+    const material = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
 
-    const geoCubo = new THREE.BoxGeometry( 2,2,2 );
-    const geoEsfera = new THREE.SphereGeometry( 1, 20,20 );
+    const geoCubo = new THREE.BoxGeometry(2, 2, 2);
+    const geoEsfera = new THREE.SphereGeometry(1, 20, 20);
 
-    const cubo = new THREE.Mesh( geoCubo, material );
-    const esfera = new THREE.Mesh( geoEsfera, material );
+    const cubo = new THREE.Mesh(geoCubo, material);
+    const esfera = new THREE.Mesh(geoEsfera, material);
 
     // Suelo
-    const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10,10, 10,10), material );
+    const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 10, 10), material);
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo);
 
     // Importar un modelo en json
     const loader = new THREE.ObjectLoader();
 
-    loader.load( 'models/soldado/soldado.json', 
-        function(objeto){
+    loader.load('models/soldado/soldado.json',
+        function(objeto) {
             cubo.add(objeto);
             objeto.position.y = 1;
         }
-    )
+    );
 
     // Importar un modelo en gltf
     const glloader = new THREE.GLTFLoader();
 
-    glloader.load( 'models/RobotExpressive.glb', function ( gltf ) {
-    //glloader.load( 'models/robota/scene.gltf', function ( gltf ) {
+    glloader.load('models/RobotExpressive.glb', function(gltf) {
         gltf.scene.position.y = 1;
-        gltf.scene.rotation.y = -Math.PI/2;
-        esfera.add( gltf.scene );
+        gltf.scene.rotation.y = -Math.PI / 2;
+        esfera.add(gltf.scene);
         console.log("ROBOT");
         console.log(gltf);
-    
-    }, undefined, function ( error ) {
-    
-        console.error( error );
-    
-    } );
+
+    }, undefined, function(error) {
+
+        console.error(error);
+
+    });
 
     esferaCubo = new THREE.Object3D();
     esferaCubo.position.y = 1.5;
     cubo.position.x = -1;
     esfera.position.x = 1;
-    cubo.add( new THREE.AxesHelper(1) );
+    cubo.add(new THREE.AxesHelper(1));
 
-    scene.add( esferaCubo);
-    esferaCubo.add( cubo );
-    esferaCubo.add( esfera );
- 
+    scene.add(esferaCubo);
+    esferaCubo.add(cubo);
+    esferaCubo.add(esfera);
 
-    scene.add( new THREE.AxesHelper(3) );
+
+    scene.add(new THREE.AxesHelper(3));
 
 }
 
-function update()
-{
+function update() {
     angulo += 0.01;
     esferaCubo.rotation.y = angulo;
 }
 
-function render()
-{
-    requestAnimationFrame( render );
+function render() {
+    requestAnimationFrame(render);
     update();
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
+}
+
+// Function to create a rounded floor geometry
+function roundedFloorGeometry(width, height, widthSegments, heightSegments) {
+    const geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
+    // Round the vertices
+    geometry.vertices.forEach(vertex => {
+        vertex.z = Math.sin(vertex.x * 0.5) * Math.cos(vertex.y * 0.5) * 0.2; // Adjust the rounding factor here
+    });
+    geometry.computeFaceNormals();
+    geometry.computeVertexNormals();
+    return geometry;
 }
