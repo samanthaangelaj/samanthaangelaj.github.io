@@ -41,7 +41,7 @@ function init() {
 }
 
 function loadScene() {
-    const material = new THREE.MeshBasicMaterial({ wireframe: true });
+    const material = new THREE.MeshBasicMaterial({ wireframe: false });
 
     // Suelo
     const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 40, 40), material); // Increase segments for smoother appearance
