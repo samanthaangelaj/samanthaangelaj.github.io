@@ -1,16 +1,3 @@
-/**
- * Escena.js
- * 
- * Seminario AGM #1. Escena basica en three.js: 
- * Transformaciones, animacion basica y modelos importados
- * 
- * @author <rvivo@upv.es>, 2023
- * 
- */
-
-// Modulos necesarios
-//import * as THREE from "../lib/three.module.js";
-//import {GLTFLoader} from "../lib/GLTFLoader.module.js";
 
 // Variables de consenso
 let renderer, scene, camera;
@@ -41,19 +28,20 @@ function init() {
 }
 
 function loadScene() {
-    const material = new THREE.MeshBasicMaterial({ color:0xffff00,  side: THREE.DoubleSide });
+    const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
 
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
+    suelo.rotateY(-Math.PI / 2); // Rotate the geometry to make it horizontal
     const circle = new THREE.Mesh(suelo, material);
     scene.add(circle);
 
     // Add fixed position spheres in corners
     const cornerPositions = [
-        new THREE.Vector3(-5, 0.75, -5),
-        new THREE.Vector3(-5, 0.75, 5),
-        new THREE.Vector3(5, 0.75, -5),
-        new THREE.Vector3(5, 0.75, 5)
+        new THREE.Vector3(-4, 0.75, -4),
+        new THREE.Vector3(-4, 0.75, 4),
+        new THREE.Vector3(4, 0.75, -4),
+        new THREE.Vector3(4, 0.75, 4)
     ];
     const mediumSize = 1.0;
     const sphereColor = new THREE.Color(0.8, 0.2, 0.2); // Red color for fixed position spheres
@@ -68,14 +56,14 @@ function loadScene() {
     const numSpheres = 5; // Number of random spheres
     const minSize = 0.5;
     const maxSize = 1.5;
-    const floorHeight = 0.5;
+    const floorHeight = 1.5;
     for (let i = 0; i < numSpheres; i++) {
         const sphereSize = Math.random() * (maxSize - minSize) + minSize; // Random size between minSize and maxSize
         const sphereColor = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
         const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor, transparent: true, opacity: 0.5 }));
-        const randomX = Math.random() * 10 - 5; // Random x position between -5 and 5
-        const randomZ = Math.random() * 10 - 5; // Random z position between -5 and 5
+        const randomX = Math.random() * 8 - 4; // Random x position between -4 and 4 to stay inside the square
+        const randomZ = Math.random() * 8 - 4; // Random z position between -4 and 4 to stay inside the square
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
@@ -93,6 +81,3 @@ function render() {
     update();
     renderer.render(scene, camera);
 }
-
-
-
