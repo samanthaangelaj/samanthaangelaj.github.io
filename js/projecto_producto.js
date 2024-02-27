@@ -41,18 +41,25 @@ function init() {
 }
 
 function loadScene() {
-    const material = new THREE.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-
-    const geoEsfera = new THREE.SphereGeometry(1, 20, 20);
-    const esfera = new THREE.Mesh(geoEsfera, material);
-    esfera.position.set(0, 3, 0); // Move the sphere above the floor
+    const material = new THREE.MeshBasicMaterial({ wireframe: true });
 
     // Suelo
     const suelo = new THREE.Mesh(roundedFloorGeometry(10, 10, 40, 40), material); // Increase segments for smoother appearance
     suelo.rotation.x = -Math.PI / 2;
     scene.add(suelo);
 
-    scene.add(esfera);
+    // Add random spheres
+    const numSpheres = 5;
+    for (let i = 0; i < numSpheres; i++) {
+        const sphereSize = Math.random() * 1.5 + 0.5; // Random size between 0.5 and 2
+        const sphereColor = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
+        const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
+        const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor }));
+        const randomX = Math.random() * 10 - 5; // Random x position between -5 and 5
+        const randomZ = Math.random() * 10 - 5; // Random z position between -5 and 5
+        esfera.position.set(randomX, sphereSize / 2, randomZ); // Set position above the floor
+        scene.add(esfera);
+    }
 
     scene.add(new THREE.AxesHelper(3));
 }
