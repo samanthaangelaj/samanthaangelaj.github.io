@@ -41,7 +41,7 @@ function loadScene() {
 
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
-    suelo.rotateZ(-Math.PI / 2); // Rotate the geometry to make it horizontal
+    suelo.rotateX(-Math.PI / 2); // Rotate the geometry to make it horizontal
     const circle = new THREE.Mesh(suelo, material);
     scene.add(circle);
 
