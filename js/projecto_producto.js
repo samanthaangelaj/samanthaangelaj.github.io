@@ -105,7 +105,9 @@ function loadScene() {
 
 function update() {
     angulo += 0.01;
+    if (floor){
     floor.rotation.y = angulo; // Rotate the floor
+    }
 }
 
 function render() {
