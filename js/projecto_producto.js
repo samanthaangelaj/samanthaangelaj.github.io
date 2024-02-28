@@ -105,6 +105,23 @@ function loadScene() {
     
     } );
 
+    // Habitacion
+    const paredes = [];
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"posxp.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"negxp.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"posyp.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"negyp.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"poszp.jpg")}) );
+    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
+                map: new THREE.TextureLoader().load(path+"negzp.jpg")}) );
+    const habitacion = new THREE.Mesh( new THREE.BoxGeometry(40,40,40),paredes);
+    scene.add(habitacion);
+
 }
 
 function update() {
