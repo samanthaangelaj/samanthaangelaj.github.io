@@ -59,7 +59,7 @@ function loadScene() {
 
     const numSpheres = 13; // Increase the number of spheres
     const minSize = 0.2; // Decrease the minimum size of spheres
-    const maxSize = 0.9; // Decrease the maximum size of spheres
+    const maxSize = 2; // Decrease the maximum size of spheres
     const minFloorHeight = 2; // Minimum height above the floor
     const maxFloorHeight = 20; // Maximum height above the floor
     for (let i = 0; i < numSpheres; i++) {
@@ -68,7 +68,7 @@ function loadScene() {
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
         const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor, transparent: true, opacity: 0.5 }));
         const angle = Math.random() * Math.PI * 2; // Random angle around the floor
-        const radius = Math.random() * 15 + 40; // Random radius around the floor
+        const radius = Math.random() * 5 + 30; // Random radius around the floor
         const floorHeight = Math.random() * (maxFloorHeight - minFloorHeight) + minFloorHeight; // Random height above the floor
         const randomX = Math.cos(angle) * radius; // Calculate x position around the floor
         const randomZ = Math.sin(angle) * radius; // Calculate z position around the floor
