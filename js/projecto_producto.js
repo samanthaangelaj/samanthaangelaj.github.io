@@ -73,11 +73,38 @@ function loadScene() {
     }
 
     scene.add(new THREE.AxesHelper(3));
+
+    const glloader = new THREE.GLTFLoader(); 
+
+    glloader.load('models/palm_tree/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 1;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add( gltf.scene );
+        console.log("PALM");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } );
+
+    glloader.load('models/garden_flower_-_vegetation/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 1;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add( gltf.scene );
+        console.log("FLOWERS 1");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } );
+
 }
 
 function update() {
     angulo += 0.01;
-    // No need to rotate anything
+    floor.rotation.y = angulo; // Rotate the floor
 }
 
 function render() {
