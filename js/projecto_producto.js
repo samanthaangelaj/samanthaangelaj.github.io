@@ -108,7 +108,7 @@ function loadScene() {
     } );
 
     glloader.load('models/purple_flower/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 4;
+        gltf.scene.position.y = 2;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add( gltf.scene );
         console.log("FLOWERS 2");
