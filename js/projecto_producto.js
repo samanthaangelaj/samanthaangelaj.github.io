@@ -78,7 +78,7 @@ function loadScene() {
     const glloader = new THREE.GLTFLoader(); 
 
     glloader.load('models/palm_tree/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 1;
+        gltf.scene.position.y = 0;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add( gltf.scene );
         console.log("PALM");
@@ -90,7 +90,7 @@ function loadScene() {
     } );
 
     glloader.load('models/garden_flower_-_vegetation/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 1;
+        gltf.scene.position.y = 0;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add( gltf.scene );
         console.log("FLOWERS 1");
@@ -104,7 +104,7 @@ function loadScene() {
 }
 
 function update() {
-    angulo += 0.01;
+    angulo += 1;
     if (floor){
     floor.rotation.y = angulo; // Rotate the floor
     }
