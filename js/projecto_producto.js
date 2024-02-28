@@ -33,7 +33,7 @@ function init() {
 }
 
 function loadScene() {
-    
+
     const path = "./images/";
     const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
 
@@ -110,17 +110,17 @@ function loadScene() {
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"posxp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"posxp.bmp")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negxp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"negxp.bmp")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"posyp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"posyp.bmp")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negyp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"negyp.bmp")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"poszp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"poszp.bmp")}) );
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negzp.jpg")}) );
+                map: new THREE.TextureLoader().load(path+"negzp.bmp")}) );
     const habitacion = new THREE.Mesh( new THREE.BoxGeometry(40,40,40),paredes);
     scene.add(habitacion);
 
