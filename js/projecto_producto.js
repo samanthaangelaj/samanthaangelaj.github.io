@@ -57,18 +57,19 @@ function loadScene() {
         scene.add(esfera);
     });
 
-    // Add random transparent spheres above the floor
-    const numSpheres = 5; // Number of random spheres
-    const minSize = 0.5;
-    const maxSize = 1.5;
-    const floorHeight = 1.5;
+    const numSpheres = 10; // Increase the number of spheres
+    const minSize = 0.2; // Decrease the minimum size of spheres
+    const maxSize = 0.5; // Decrease the maximum size of spheres
+    const floorHeight = 3.0; // Increase the height above the floor
     for (let i = 0; i < numSpheres; i++) {
         const sphereSize = Math.random() * (maxSize - minSize) + minSize; // Random size between minSize and maxSize
         const sphereColor = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
         const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor, transparent: true, opacity: 0.5 }));
-        const randomX = Math.random() * 8 - 4; // Random x position between -4 and 4 to stay inside the square
-        const randomZ = Math.random() * 8 - 4; // Random z position between -4 and 4 to stay inside the square
+        const angle = Math.random() * Math.PI * 2; // Random angle around the floor
+        const radius = Math.random() * 6 + 2; // Random radius around the floor
+        const randomX = Math.cos(angle) * radius; // Calculate x position around the floor
+        const randomZ = Math.sin(angle) * radius; // Calculate z position around the floor
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
