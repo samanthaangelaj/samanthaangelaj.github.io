@@ -12,6 +12,7 @@ loadScene();
 render();
 
 function init() {
+
     // Motor de render
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -22,18 +23,12 @@ function init() {
     scene = new THREE.Scene();
     scene.background = new THREE.Color(135, 206, 250);
 
-    // Camara
-
     // Instanciar la camara
     camera= new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,100);
     camera.position.set(4,4,15);
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0);      
-
-    //camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    //camera.position.set(0, 5, 10);
-    //camera.lookAt(new THREE.Vector3(0, 0, 0));
 }
 
 function loadScene() {
@@ -47,7 +42,7 @@ function loadScene() {
 
     // Add fixed position spheres in corners
     const cornerPositions = [
-        new THREE.Vector3(-4, 0.75, -4),
+        new THREE.Vector3(-7, -2, -7),
         new THREE.Vector3(-4, 0.75, 4),
         new THREE.Vector3(4, 0.75, -4),
         new THREE.Vector3(4, 0.75, 4)
