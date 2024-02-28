@@ -42,9 +42,9 @@ function loadScene() {
 
     // Add fixed position spheres in corners
     const cornerPositions = [
-        new THREE.Vector3(-10, 10, 7),
+        new THREE.Vector3(-10, 5, 7),
         new THREE.Vector3(-10, -3, 7),
-        new THREE.Vector3(4, 0.75, -4),
+        new THREE.Vector3(10, 5, -7),
         new THREE.Vector3(4, 0.75, 4)
     ];
     const mediumSize = 1.0;
