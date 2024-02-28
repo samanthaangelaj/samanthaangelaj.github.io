@@ -44,8 +44,8 @@ function loadScene() {
     const cornerPositions = [
         new THREE.Vector3(-10, 5, 7),
         new THREE.Vector3(-10, -3, 7),
-        new THREE.Vector3(10, 5, -7),
-        new THREE.Vector3(4, 0.75, 4)
+        new THREE.Vector3(10, 5, 7),
+        new THREE.Vector3(10, -3, 7),
     ];
     const mediumSize = 1.0;
     const sphereColor = new THREE.Color(0.8, 0.2, 0.2); // Red color for fixed position spheres
