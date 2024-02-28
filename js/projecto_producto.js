@@ -4,7 +4,8 @@ let renderer, scene, camera;
 
 // Otras globales
 let angulo = 0;
-let cameraControls
+let cameraControls;
+let floor;
 
 // Acciones
 init();
