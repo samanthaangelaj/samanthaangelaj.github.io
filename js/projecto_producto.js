@@ -38,7 +38,7 @@ function loadScene() {
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
     suelo.rotateX(-Math.PI / 2); // Rotate the geometry to make it horizontal
-    const floor = new THREE.Mesh(suelo, material);
+    floor = new THREE.Mesh(suelo, material);
     scene.add(floor);
 
     // Add fixed position spheres in corners
