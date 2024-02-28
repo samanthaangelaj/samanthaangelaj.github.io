@@ -107,6 +107,18 @@ function loadScene() {
     
     } );
 
+    glloader.load('models/purple_flower/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 4;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add( gltf.scene );
+        console.log("FLOWERS 2");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+    
+        console.error( error );
+    
+    } );
+
     // Habitacion
     const paredes = [];
     paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
