@@ -33,6 +33,8 @@ function init() {
 }
 
 function loadScene() {
+    
+    const path = "./images/";
     const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
 
     // Suelo
