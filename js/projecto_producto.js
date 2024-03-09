@@ -46,14 +46,21 @@ function loadScene() {
     floor = new THREE.Mesh(suelo, material);
     scene.add(floor);
 
-    // Create a Phong material for the fixed position spheres with bubble-like effect
-    const bubbleMaterial = new THREE.MeshPhongMaterial({
-        color: 0x00FFFF, // Light blue color (you can adjust the color)
-        transparent: true,
-        opacity: 0.5, // Adjust opacity for translucency
-        shininess: 100, // Adjust shininess for specular highlights
-        specular: 0xFFFFFF, // White specular highlight
-        reflectivity: 1 // Full reflectivity
+    // Load an environment map texture for reflection
+    const reflectionCube = new THREE.CubeTextureLoader()
+        .setPath('textures/')
+        .load([
+            'px.jpg', 'nx.jpg',
+            'py.jpg', 'ny.jpg',
+            'pz.jpg', 'nz.jpg'
+        ]);
+
+    // Create a material for the fixed position spheres with environment mapping
+    const bubbleMaterial = new THREE.MeshStandardMaterial({
+        color: 0xFFFFFF, // White color
+        metalness: 1, // Fully metallic
+        roughness: 0, // Smooth surface
+        envMap: reflectionCube // Apply environment mapping for reflections
     });
 
     // Add fixed position spheres in corners with bubble-like effect
@@ -65,7 +72,7 @@ function loadScene() {
     ];
     const mediumSize = 1.0;
     cornerPositions.forEach(position => {
-        const geoEsfera = new THREE.SphereGeometry(mediumSize, 20, 20);
+        const geoEsfera = new THREE.SphereGeometry(mediumSize, 32, 32);
         const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial); // Use bubble-like material
         esfera.position.copy(position);
         scene.add(esfera);
@@ -139,7 +146,7 @@ function loadScene() {
 }
 
 function update() {
-    angulo += 0.05;
+    angulo += 0.01;
     if (floor){
     floor.rotation.y = angulo; // Rotate the floor
     }
