@@ -46,7 +46,17 @@ function loadScene() {
     floor = new THREE.Mesh(suelo, material);
     scene.add(floor);
 
-    // Add fixed position spheres in corners
+    // Create a Phong material for the fixed position spheres with bubble-like effect
+    const bubbleMaterial = new THREE.MeshPhongMaterial({
+        color: 0x00FFFF, // Light blue color (you can adjust the color)
+        transparent: true,
+        opacity: 0.5, // Adjust opacity for translucency
+        shininess: 100, // Adjust shininess for specular highlights
+        specular: 0xFFFFFF, // White specular highlight
+        reflectivity: 1 // Full reflectivity
+    });
+
+    // Add fixed position spheres in corners with bubble-like effect
     const cornerPositions = [
         new THREE.Vector3(-10, 5, 7),
         new THREE.Vector3(-10, -3, 7),
@@ -54,10 +64,9 @@ function loadScene() {
         new THREE.Vector3(10, -3, 7),
     ];
     const mediumSize = 1.0;
-    const sphereColor = new THREE.Color(0.8, 0.2, 0.2); // Red color for fixed position spheres
     cornerPositions.forEach(position => {
         const geoEsfera = new THREE.SphereGeometry(mediumSize, 20, 20);
-        const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor }));
+        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial); // Use bubble-like material
         esfera.position.copy(position);
         scene.add(esfera);
     });
@@ -126,32 +135,6 @@ function loadScene() {
     paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negzp.bmp")}));
     const habitacion = new THREE.Mesh(new THREE.BoxGeometry(40, 40, 40), paredes);
     scene.add(habitacion);
-
-     // Create a sphere geometry for the bubble
-    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 32);
-
-    // Load an environment map texture for reflection
-    const reflectionCube = new THREE.CubeTextureLoader()
-        .setPath('textures/')
-        .load([
-            'px.jpg', 'nx.jpg',
-            'py.jpg', 'ny.jpg',
-            'pz.jpg', 'nz.jpg'
-        ]);
-
-    // Create a custom shader material for the bubble
-    const bubbleMaterial = new THREE.ShaderMaterial({
-        uniforms: {
-            reflectionMap: { value: reflectionCube }
-        },
-        vertexShader: document.getElementById('vertexShader').textContent,
-        fragmentShader: document.getElementById('fragmentShader').textContent,
-        side: THREE.DoubleSide // Ensure both sides are rendered
-    });
-
-    // Create the bubble mesh
-    const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
-    scene.add(bubble);
 
 }
 
