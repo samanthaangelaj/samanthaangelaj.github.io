@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Bubble Effect</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <!-- Shader script elements -->
+    <script id="vertexShader" type="x-shader/x-vertex">
+        varying vec3 vWorldPosition;
+
+        void main() {
+            vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+            vWorldPosition = worldPosition.xyz;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    </script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform samplerCube reflectionMap;
+        varying vec3 vWorldPosition;
+
+        void main() {
+            vec3 worldNormal = normalize(vWorldPosition - cameraPosition);
+            vec3 reflectionVector = reflect(worldNormal, vec3(0.0, 1.0, 0.0));
+            vec4 reflectedColor = textureCube(reflectionMap, reflectionVector);
+
+            gl_FragColor = reflectedColor;
+        }
+    </script>
+
+    <!-- Your JavaScript code -->
+    <script src="projecto_producto.js"></script>
+</body>
+</html>

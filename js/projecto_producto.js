@@ -38,7 +38,7 @@ function init() {
 function loadScene() {
 
     const path = "./images/";
-    const material = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide });
+    const material = new THREE.MeshBasicMaterial({ color: 0x9CE648, side: THREE.DoubleSide });
 
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
@@ -152,7 +152,7 @@ function loadScene() {
     // Create the bubble mesh
     const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
     scene.add(bubble);
-    
+
 }
 
 function update() {
