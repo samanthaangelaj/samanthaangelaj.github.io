@@ -48,11 +48,11 @@ function loadScene() {
 
     // Load an environment map texture for reflection
     const reflectionCube = new THREE.CubeTextureLoader()
-        .setPath('textures/')
+        .setPath('images/')
         .load([
-            'px.jpg', 'nx.jpg',
-            'py.jpg', 'ny.jpg',
-            'pz.jpg', 'nz.jpg'
+            'posxp.bmp', 'negxp.bmp',
+            'posyp.bmp', 'negyp.bmp',
+            'poszp.bmp', 'negzp.bmp'
         ]);
 
     // Create a material for the fixed position spheres with environment mapping
