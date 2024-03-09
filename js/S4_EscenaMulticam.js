@@ -23,8 +23,8 @@ let renderer, scene, camera;
 let cameraControls, effectController;
 let esferaCubo,cubo,esfera,suelo;
 let video;
-let alzado, planta, perfil;
-const L = 5;
+let alzado, planta, perfil; //tres camaras extra de otras vistas 
+const L = 5; //distancia al plan de las camaras ortograficas, mas o menos escena visible
 
 // Acciones
 init();
@@ -66,7 +66,7 @@ function init()
     renderer.antialias = true;
     renderer.shadowMap.enabled = true;
     renderer.setClearColor(0xAAAAAA);
-    renderer.autoClear = false;
+    renderer.autoClear = false; //threejs cada vez que va a dibujar un frame, lo borra y dibuja pero no queremeos que hace eso 
 
     // Instanciar el nodo raiz de la escena
     scene = new THREE.Scene();
@@ -277,8 +277,12 @@ function updateAspectRatio()
     if(ar>1){
         alzado.left = planta.left = perfil.left = -L*ar;
         alzado.right = planta.right =perfil.right = L*ar;
+        alzado.top = planta.top= perfil.top=  L;
+        alzado.bottom = planta.bottom = perfil.bottom = -L;  
     }
     else{
+        alzado.left = planta.left = perfil.left = -L;
+        alzado.right = planta.right =perfil.right = L;
         alzado.top = planta.top= perfil.top=  L/ar;
         alzado.bottom = planta.bottom = perfil.bottom = -L/ar;       
     }

@@ -29,7 +29,10 @@ function init() {
     camera.position.set(0,4,17);
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
-    camera.lookAt(0,1,0);      
+    camera.lookAt(0,1,0); 
+    
+    const ambiental = new THREE.AmbientLight(0x222222);
+    scene.add(ambiental);
 }
 
 function loadScene() {
@@ -59,6 +62,12 @@ function loadScene() {
         scene.add(esfera);
     });
 
+    // Define boundaries
+    const minX = -15;
+    const maxX = 15;
+    const minZ = -15;
+    const maxZ = 15;
+
     const numSpheres = 13; // Increase the number of spheres
     const minSize = 0.2; // Decrease the minimum size of spheres
     const maxSize = 2; // Decrease the maximum size of spheres
@@ -67,63 +76,83 @@ function loadScene() {
     for (let i = 0; i < numSpheres; i++) {
         const sphereSize = Math.random() * (maxSize - minSize) + minSize; // Random size between minSize and maxSize
         const sphereColor = new THREE.Color(Math.random(), Math.random(), Math.random()); // Random color
+        
+        // Calculate random position within boundaries
+        const randomX = Math.random() * (maxX - minX) + minX;
+        const randomZ = Math.random() * (maxZ - minZ) + minZ;
+        const floorHeight = Math.random() * (maxFloorHeight - minFloorHeight) + minFloorHeight; // Random height above the floor
+
+        // Create and position sphere
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
         const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor, transparent: true, opacity: 0.5 }));
-        const angle = Math.random() * Math.PI * 2; // Random angle around the floor
-        const radius = Math.random() * 5 + 30; // Random radius around the floor
-        const floorHeight = Math.random() * (maxFloorHeight - minFloorHeight) + minFloorHeight; // Random height above the floor
-        const randomX = Math.cos(angle) * radius; // Calculate x position around the floor
-        const randomZ = Math.sin(angle) * radius; // Calculate z position around the floor
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
-    
 
     scene.add(new THREE.AxesHelper(3));
 
-    const glloader = new THREE.GLTFLoader(); 
+    // Loading 3D models
+    const glloader = new THREE.GLTFLoader();
 
+    // Load palm tree
     glloader.load('models/palm_tree/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.rotation.y = -Math.PI/2;
-        floor.add( gltf.scene );
+        floor.add(gltf.scene);
         console.log("PALM");
         console.log(gltf);
     }, undefined, function ( error ) {
-    
-        console.error( error );
-    
-    } );
+        console.error(error);
+    });
 
+    // Load flowers
     glloader.load('models/garden_flower_-_vegetation/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.rotation.y = -Math.PI/2;
-        floor.add( gltf.scene );
+        floor.add(gltf.scene);
         console.log("FLOWERS 1");
         console.log(gltf);
     }, undefined, function ( error ) {
-    
-        console.error( error );
-    
-    } );
+        console.error(error);
+    });
 
     // Habitacion
     const paredes = [];
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"posxp.bmp")}) );
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negxp.bmp")}) );
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"posyp.bmp")}) );
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negyp.bmp")}) );
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"poszp.bmp")}) );
-    paredes.push( new THREE.MeshBasicMaterial({side:THREE.BackSide,
-                map: new THREE.TextureLoader().load(path+"negzp.bmp")}) );
-    const habitacion = new THREE.Mesh( new THREE.BoxGeometry(40,40,40),paredes);
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"posxp.bmp")}));
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negxp.bmp")}));
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"posyp.bmp")}));
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negyp.bmp")}));
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"poszp.bmp")}));
+    paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negzp.bmp")}));
+    const habitacion = new THREE.Mesh(new THREE.BoxGeometry(40, 40, 40), paredes);
     scene.add(habitacion);
 
+     // Create a sphere geometry for the bubble
+    const bubbleGeometry = new THREE.SphereGeometry(1, 32, 32);
+
+    // Load an environment map texture for reflection
+    const reflectionCube = new THREE.CubeTextureLoader()
+        .setPath('textures/')
+        .load([
+            'px.jpg', 'nx.jpg',
+            'py.jpg', 'ny.jpg',
+            'pz.jpg', 'nz.jpg'
+        ]);
+
+    // Create a custom shader material for the bubble
+    const bubbleMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+            reflectionMap: { value: reflectionCube }
+        },
+        vertexShader: document.getElementById('vertexShader').textContent,
+        fragmentShader: document.getElementById('fragmentShader').textContent,
+        side: THREE.DoubleSide // Ensure both sides are rendered
+    });
+
+    // Create the bubble mesh
+    const bubble = new THREE.Mesh(bubbleGeometry, bubbleMaterial);
+    scene.add(bubble);
+    
 }
 
 function update() {
