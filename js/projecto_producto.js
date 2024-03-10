@@ -9,8 +9,9 @@ let floor;
 let rotationSpeed = 0.01;
 
 // Acciones
-init();
+//init();
 loadScene();
+init();
 render();
 
 function init() {
