@@ -168,7 +168,7 @@ function update() {
     angulo += rotationSpeed; // Update angle with rotation speed
     if (floor){
         floor.rotation.y = angulo; // Rotate the floor
-}
+}}
 
 function render() {
     requestAnimationFrame(render);
