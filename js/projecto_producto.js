@@ -37,7 +37,7 @@ function init() {
     direccional.castShadow = true;
     scene.add(direccional);
 
-    renderer.domElement.addEventListener('dbclick', animate2);
+    renderer.domElement.addEventListener('dblclick', animate2);
 
 }
 
