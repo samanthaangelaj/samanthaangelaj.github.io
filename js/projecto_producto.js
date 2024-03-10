@@ -102,10 +102,21 @@ function loadScene() {
 
         // Create and position sphere
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
-        const esfera = new THREE.Mesh(geoEsfera, new THREE.MeshBasicMaterial({ color: sphereColor, transparent: true, opacity: 0.5 }));
+        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial2);
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
+
+    // Material for the random spheres
+    const bubbleMaterial2 = new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF, // White color
+        transparent: true,
+        opacity: 0.7, // Adjust opacity for translucency
+        shininess: 100, // Adjust shininess for specular highlights
+        specular: 0xFFFFFF, // White specular highlight
+        reflectivity: 1 // Full reflectivity
+    });
+
 
     scene.add(new THREE.AxesHelper(3));
 
