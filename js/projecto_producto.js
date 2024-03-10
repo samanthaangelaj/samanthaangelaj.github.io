@@ -197,7 +197,7 @@ function animate2(event){
 
     if( intersecciones.length > 0 ){
         console.log("muy maldito");
-        new TWEEN.Tween( floor.rotation ).
+        new THREE.TWEEN.Tween( floor.rotation ).
         to( {x:[0,0],y:[Math.PI,-Math.PI/2],z:[0,0]}, 5000 ).
         interpolation( TWEEN.Interpolation.Linear ).
         easing( TWEEN.Easing.Exponential.InOut ).
