@@ -6,6 +6,7 @@ let renderer, scene, camera;
 let angulo = 0;
 let cameraControls;
 let floor;
+let rotationSpeed = 0.01;
 
 // Acciones
 init();
@@ -35,6 +36,11 @@ function init() {
     direccional.position.set(-1,1,-1);
     direccional.castShadow = true;
     scene.add(direccional);
+
+    floor.addEventListener('click', function() {
+        rotationSpeed += 0.01; // Increase rotation speed when the floor is clicked
+    });
+
 }
 
 function loadScene() {
@@ -80,6 +86,16 @@ function loadScene() {
         scene.add(esfera);
     });
 
+     // Material for the random spheres
+     const bubbleMaterial2 = new THREE.MeshPhongMaterial({
+        color: 0xFFFFFF, // White color
+        transparent: true,
+        opacity: 0.7, // Adjust opacity for translucency
+        shininess: 100, // Adjust shininess for specular highlights
+        specular: 0xFFFFFF, // White specular highlight
+        reflectivity: 1 // Full reflectivity
+    });
+
     // Define boundaries
     const minX = -15;
     const maxX = 15;
@@ -106,17 +122,6 @@ function loadScene() {
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
-
-    // Material for the random spheres
-    const bubbleMaterial2 = new THREE.MeshPhongMaterial({
-        color: 0xFFFFFF, // White color
-        transparent: true,
-        opacity: 0.7, // Adjust opacity for translucency
-        shininess: 100, // Adjust shininess for specular highlights
-        specular: 0xFFFFFF, // White specular highlight
-        reflectivity: 1 // Full reflectivity
-    });
-
 
     scene.add(new THREE.AxesHelper(3));
 
@@ -160,9 +165,9 @@ function loadScene() {
 
 function update() {
     angulo += 0.01;
+    angulo += rotationSpeed; // Update angle with rotation speed
     if (floor){
-    floor.rotation.y = angulo; // Rotate the floor
-    }
+        floor.rotation.y = angulo; // Rotate the floor
 }
 
 function render() {
