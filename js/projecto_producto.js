@@ -163,7 +163,7 @@ function loadScene() {
 }
 
 function update() {
-    angulo += 0.01;
+    //angulo += 0.01;
     angulo += rotationSpeed; // Update angle with rotation speed
     if (floor){
         floor.rotation.y = angulo; // Rotate the floor
@@ -196,7 +196,8 @@ function animate2(event){
     let intersecciones = rayo.intersectObjects(floor.children,true);
 
     if( intersecciones.length > 0 ){
-       rotationSpeed = 0.1;
+        console.log("porfis");
+        rotationSpeed = 0.1;
     }
 }
 
