@@ -31,8 +31,10 @@ function init() {
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0); 
     
-    const ambiental = new THREE.AmbientLight(0x222222);
-    scene.add(ambiental);
+    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+    direccional.position.set(-1,1,-1);
+    direccional.castShadow = true;
+    scene.add(direccional);
 }
 
 function loadScene() {
