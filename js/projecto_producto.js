@@ -37,9 +37,7 @@ function init() {
     direccional.castShadow = true;
     scene.add(direccional);
 
-    floor.addEventListener('click', function() {
-        rotationSpeed += 0.01; // Increase rotation speed when the floor is clicked
-    });
+    renderer.domElement.addEventListener('dbclick', animate2);
 
 }
 
@@ -53,6 +51,7 @@ function loadScene() {
     suelo.rotateX(-Math.PI / 2); // Rotate the geometry to make it horizontal
     floor = new THREE.Mesh(suelo, material);
     scene.add(floor);
+    floor.name = 'floor';
 
     // Load an environment map texture for reflection
     const reflectionCube = new THREE.CubeTextureLoader()
@@ -180,6 +179,28 @@ function animate() {
     requestAnimationFrame(animate);
     cameraControls.update();
     renderer.render(scene, camera);
+}
+
+function animate2(event){
+    // Capturar y normalizar
+    let x= event.clientX;
+    let y = event.clientY;
+    x = ( x / window.innerWidth ) * 2 - 1;
+    y = -( y / window.innerHeight ) * 2 + 1;
+
+    // Construir el rayo y detectar la interseccion
+    const rayo = new THREE.Raycaster();
+    rayo.setFromCamera(new THREE.Vector2(x,y), camera);
+    const soldado = scene.getObjectByName('floor');
+    let intersecciones = rayo.intersectObjects(floor.children,true);
+
+    if( intersecciones.length > 0 ){
+        new TWEEN.Tween( floor.rotation ).
+        to( {x:[0,0],y:[Math.PI,-Math.PI/2],z:[0,0]}, 5000 ).
+        interpolation( TWEEN.Interpolation.Linear ).
+        easing( TWEEN.Easing.Exponential.InOut ).
+        start();
+    }
 }
 
 animate(); 
