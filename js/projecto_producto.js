@@ -1,4 +1,7 @@
 
+
+import {GUI} from "../lib/lil-gui.module.min.js";
+
 // Variables de consenso
 let renderer, scene, camera;
 
