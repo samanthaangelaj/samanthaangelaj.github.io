@@ -1,6 +1,6 @@
 
 
-import {GUI} from "../lib/lil-gui.module.min.js";
+//import {GUI} from "/lib/lil-gui.module.min.js";
 
 // Variables de consenso
 let renderer, scene, camera;
@@ -14,7 +14,7 @@ let rotationSpeed = 0.01;
 // Acciones
 init();
 loadScene();
-setupGUI();
+//setupGUI();
 render();
 
 function init() {
@@ -124,6 +124,33 @@ function loadScene() {
         const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial2);
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
+
+        //text 
+        const fontLoader = new THREE.FontLoader();
+        fontLoader.load(
+          "/fonts/helvetiker_bold.typeface.json",
+          (font) => {
+            const textGeometry = new THREE.TextGeometry("I wuv yew", {
+              font,
+              size: 0.5,
+              height: 0.2,
+              curveSegments: 3,
+              bevelEnabled: true,
+              bevelThickness: 0.03,
+              bevelSize: 0.04,
+              bevelOffset: 0,
+              bevelSegments: 8
+            });
+
+            textGeometry.center(); // does the same things as above code
+            const matcapTexture = textureLoader.load("/static/textures/matcaps/4.png");
+            const material = new THREE.MeshMatcapMaterial({
+              matcap: matcapTexture
+            });
+            const text = new THREE.Mesh(textGeometry, material);
+            scene.add(text);
+          }
+        )
     }
 
     scene.add(new THREE.AxesHelper(3));
