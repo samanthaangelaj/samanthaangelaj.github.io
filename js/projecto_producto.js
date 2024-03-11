@@ -174,6 +174,29 @@ function loadScene() {
 
 }
 
+function setupGUI(){
+
+    // Definicion de los controles
+	effectController = {
+		mensaje: 'Aftermovue 2023',
+		play: function(){video.play();},
+		pause: function(){video.pause();},
+        mute: true,
+	};
+
+	// Creacion interfaz
+	const gui = new GUI();
+
+    // Construccion del menu
+	const h = gui.addFolder("Control esferaCubo");
+	h.add(effectController, "mensaje").name("Aftermovie 2023");
+    const videofolder = gui.addFolder("Control video");
+    videofolder.add(effectController,"mute").onChange(v=>{video.muted = v});
+	videofolder.add(effectController,"play");
+	videofolder.add(effectController,"pause");
+
+}
+
 function update() {
     //angulo += 0.01;
     angulo += rotationSpeed; // Update angle with rotation speed
