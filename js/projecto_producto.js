@@ -160,6 +160,18 @@ function loadScene() {
     const habitacion = new THREE.Mesh(new THREE.BoxGeometry(40, 40, 40), paredes);
     scene.add(habitacion);
 
+    // Cine
+    video = document.createElement('video');
+    video.src = "./videos/bajabeach.mp4";
+    video.load();
+    video.muted = true;
+    video.play();
+    const texvideo = new THREE.VideoTexture(video);
+    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
+                                    new THREE.MeshBasicMaterial({map:texvideo}));
+    pantalla.position.set(0,4.5,-5);
+    scene.add(pantalla);
+
 }
 
 function update() {
@@ -197,6 +209,7 @@ function animate2(event){
 
     if( intersecciones.length > 0 ){
         console.log("porfis");
+
         rotationSpeed = 0.1;
     }
 }
