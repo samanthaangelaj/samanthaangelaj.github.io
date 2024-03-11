@@ -1,6 +1,7 @@
 
 
 //import {GUI} from "/lib/lil-gui.module.min.js";
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 
 // Variables de consenso
 let renderer, scene, camera;
