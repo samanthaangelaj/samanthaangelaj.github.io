@@ -11,6 +11,7 @@ let rotationSpeed = 0.01;
 // Acciones
 init();
 loadScene();
+setupGUI();
 render();
 
 function init() {
@@ -185,7 +186,7 @@ function setupGUI(){
 	};
 
 	// Creacion interfaz
-	const gui = new GUI();
+	const gui = new THREE.GUI();
 
     // Construccion del menu
 	const h = gui.addFolder("Control esferaCubo");
