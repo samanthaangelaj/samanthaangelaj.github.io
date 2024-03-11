@@ -167,7 +167,7 @@ function loadScene() {
     video.muted = true;
     video.play();
     const texvideo = new THREE.VideoTexture(video);
-    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,6, 4,4), 
+    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,9,5,5), 
                                     new THREE.MeshBasicMaterial({map:texvideo}));
     pantalla.position.set(0,4.5,-5);
     scene.add(pantalla);
