@@ -1,7 +1,5 @@
 
 
-//import {GUI} from "/lib/lil-gui.module.min.js";
-
 // Variables de consenso
 let renderer, scene, camera;
 
@@ -76,7 +74,7 @@ function loadScene() {
 
     // Add fixed position spheres in corners with bubble-like effect
     const cornerPositions = [
-        //new THREE.Vector3(-10, 5, 7),
+        new THREE.Vector3(-10, 5, 7),
         new THREE.Vector3(-10, -3, 7),
         new THREE.Vector3(10, 5, 7),
         new THREE.Vector3(10, -3, 7),
@@ -121,7 +119,7 @@ function loadScene() {
 
         // Create and position sphere
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
-        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial);
+        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial2);
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
@@ -211,7 +209,7 @@ function setupGUI(){
 
     // Definicion de los controles
 	effectController = {
-		//mensaje: 'Aftermovue 2023',
+		mensaje: 'Aftermovie 2023',
 		play: function(){video.play();},
 		pause: function(){video.pause();},
         mute: true,
