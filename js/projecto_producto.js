@@ -168,13 +168,29 @@ function loadScene() {
         bevelSegments: 8
         });
 
+        const textGeometry5 = new THREE.TextGeometry("Baja Beach Fest 2025", {
+        font,
+        size: 0.5,
+        height: 0.2,
+        curveSegments: 3,
+        bevelEnabled: true,
+        bevelThickness: 0.03,
+        bevelSize: 0.04,
+        bevelOffset: 0,
+        bevelSegments: 8
+        });
+
         //textGeometry.center(); // does the same things as above code
 
         const textureLoader = new THREE.TextureLoader();
         const matcapTexture = textureLoader.load("/images/4.png");
+
         const material = new THREE.MeshMatcapMaterial({
         matcap: matcapTexture
         });
+
+        const emissiveColor = new THREE.Color(0xff0000);
+        const emissiveMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, emissive: emissiveColor, emissiveIntensity: 1 });
         
         const text1 = new THREE.Mesh(textGeometry1, material);
         text1.position.set(-12, 5, 7);
@@ -191,6 +207,10 @@ function loadScene() {
         const text4 = new THREE.Mesh(textGeometry4, material)
         text4.position.set(7, -3, 7);
         scene.add(text4); 
+
+        const text5 = new THREE.Mesh(textGeometry4, emissiveMaterial)
+        text4.position.set(-2, 5, 7);
+        scene.add(text4);
 
         // Create text meshes
         textMesh1 = new THREE.Mesh(textGeometry1, material);
