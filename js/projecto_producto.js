@@ -73,19 +73,19 @@ function loadScene() {
     });
 
     // Add fixed position spheres in corners with bubble-like effect
-    const cornerPositions = [
-        new THREE.Vector3(-10, 5, 7),
-        new THREE.Vector3(-10, -3, 7),
-        new THREE.Vector3(10, 5, 7),
-        new THREE.Vector3(10, -3, 7),
-    ];
-    const mediumSize = 1.0;
-    cornerPositions.forEach(position => {
-        const geoEsfera = new THREE.SphereGeometry(mediumSize, 32, 32);
-        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial); // Use bubble-like material
-        esfera.position.copy(position);
-        scene.add(esfera);
-    });
+    //const cornerPositions = [
+        //new THREE.Vector3(-10, 5, 7),
+        //new THREE.Vector3(-10, -3, 7),
+        //new THREE.Vector3(10, 5, 7),
+        //new THREE.Vector3(10, -3, 7),
+    // ];
+    //const mediumSize = 1.0;
+    // cornerPositions.forEach(position => {
+    //     const geoEsfera = new THREE.SphereGeometry(mediumSize, 32, 32);
+    //     const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial); // Use bubble-like material
+    //     esfera.position.copy(position);
+    //     scene.add(esfera);
+    // });
 
      // Material for the random spheres
      const bubbleMaterial2 = new THREE.MeshPhongMaterial({
@@ -130,7 +130,7 @@ function loadScene() {
     fontLoader.load(
     "/fonts/helvetiker_bold.typeface.json",
     (font) => {
-        const textGeometry = new THREE.TextGeometry("FESTIVAL", {
+        const textGeometry1 = new THREE.TextGeometry("CHECK LINEUP", {
         font,
         size: 0.5,
         height: 0.2,
@@ -142,15 +142,54 @@ function loadScene() {
         bevelSegments: 8
         });
 
-        textGeometry.center(); // does the same things as above code
+        const textGeometry2 = new THREE.TextGeometry("QUESTIONS & ANSWERS", {
+        font,
+        size: 0.5,
+        height: 0.2,
+        curveSegments: 3,
+        bevelEnabled: true,
+        bevelThickness: 0.03,
+        bevelSize: 0.04,
+        bevelOffset: 0,
+        bevelSegments: 8
+        });
+
+        const textGeometry3 = new THREE.TextGeometry("BUY TICKETS", {
+        font,
+        size: 0.5,
+        height: 0.2,
+        curveSegments: 3,
+        bevelEnabled: true,
+        bevelThickness: 0.03,
+        bevelSize: 0.04,
+        bevelOffset: 0,
+        bevelSegments: 8
+        });
+
+        //textGeometry.center(); // does the same things as above code
+
         const textureLoader = new THREE.TextureLoader();
         const matcapTexture = textureLoader.load("/images/4.png");
         const material = new THREE.MeshMatcapMaterial({
         matcap: matcapTexture
         });
-        const text = new THREE.Mesh(textGeometry, material);
+        
+        const text1 = new THREE.Mesh(textGeometry1, material);
         text.position.set(-10, 5, 7);
         scene.add(text);
+
+        const text2 = new THREE.Mesh(textGeometry2, material); 
+        text.position.set(-10, -3, 7);
+        scene.add(text2); 
+
+        const text3 = new THREE.Mesh(textGeometry3, material)
+        text.position.set(10, 5, 7);
+        scene.add(text3); 
+
+        const text4 = new THREE.Mesh(textGeometry4, material)
+        text.position.set(10, -3, 7);
+        scene.add(text4); 
+
     })
 
     scene.add(new THREE.AxesHelper(3));
