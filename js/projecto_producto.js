@@ -217,12 +217,12 @@ function setupGUI(){
 	};
 
 	// Creacion interfaz
-	const gui = new THREE.gui;
+	//const gui = new THREE.gui;
 
     // Construccion del menu
-	const h = gui.addFolder("Control esferaCubo");
+	const h = THREE.gui.addFolder("Control esferaCubo");
 	h.add(effectController, "mensaje").name("Aftermovie 2023");
-    const videofolder = gui.addFolder("Control video");
+    const videofolder = THREE.gui.addFolder("Control video");
     videofolder.add(effectController,"mute").onChange(v=>{video.muted = v});
 	videofolder.add(effectController,"play");
 	videofolder.add(effectController,"pause");
