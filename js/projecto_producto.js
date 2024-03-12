@@ -107,7 +107,7 @@ function loadScene() {
 
     const numSpheres = 13; // Increase the number of spheres
     const minSize = 0.2; // Decrease the minimum size of spheres
-    const maxSize = 2; // Decrease the maximum size of spheres
+    const maxSize = 1; // Decrease the maximum size of spheres
     const minFloorHeight = 2; // Minimum height above the floor
     const maxFloorHeight = 20; // Maximum height above the floor
     for (let i = 0; i < numSpheres; i++) {
@@ -121,7 +121,7 @@ function loadScene() {
 
         // Create and position sphere
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
-        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial2);
+        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial);
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
