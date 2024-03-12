@@ -217,7 +217,7 @@ function setupGUI(){
 	};
 
 	// Creacion interfaz
-	const gui = new GUI();
+	const gui = new THREE.gui();
 
     // Construccion del menu
 	const h = gui.addFolder("Control esferaCubo");
