@@ -145,6 +145,7 @@ function loadScene() {
         });
 
         textGeometry.center(); // does the same things as above code
+        const textureLoader = new THREE.TextureLoader();
         const matcapTexture = textureLoader.load("/images/4.png");
         const material = new THREE.MeshMatcapMaterial({
         matcap: matcapTexture
