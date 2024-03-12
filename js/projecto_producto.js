@@ -29,7 +29,7 @@ function init() {
 
     // Instanciar la camara
     camera= new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,100);
-    camera.position.set(0,3,18);
+    camera.position.set(0,2.5,18);
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0); 
@@ -172,11 +172,11 @@ function loadScene() {
         });
         
         const text1 = new THREE.Mesh(textGeometry1, material);
-        text1.position.set(-8, 5, 7);
+        text1.position.set(-12, 5, 7);
         scene.add(text1);
 
         const text2 = new THREE.Mesh(textGeometry2, material); 
-        text2.position.set(-10, -3, 7);
+        text2.position.set(-13, -3, 7);
         scene.add(text2); 
 
         const text3 = new THREE.Mesh(textGeometry3, material)
@@ -211,6 +211,17 @@ function loadScene() {
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
         console.log("FLOWERS 1");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    //Load fern grass
+    glloader.load('models/fern_grass_02/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 3;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add(gltf.scene);
+        console.log("GRASS 1");
         console.log(gltf);
     }, undefined, function ( error ) {
         console.error(error);
