@@ -177,7 +177,7 @@ function loadScene() {
         scene.add(text1);
 
         const text2 = new THREE.Mesh(textGeometry2, material); 
-        text2.position.set(-13, -3, 7);
+        text2.position.set(-15, -3, 7);
         scene.add(text2); 
 
         const text3 = new THREE.Mesh(textGeometry3, material)
