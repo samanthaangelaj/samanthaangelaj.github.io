@@ -175,19 +175,19 @@ function loadScene() {
         });
         
         const text1 = new THREE.Mesh(textGeometry1, material);
-        text.position.set(-10, 5, 7);
+        text1.position.set(-10, 5, 7);
         scene.add(text1);
 
         const text2 = new THREE.Mesh(textGeometry2, material); 
-        text.position.set(-10, -3, 7);
+        text2.position.set(-10, -3, 7);
         scene.add(text2); 
 
         const text3 = new THREE.Mesh(textGeometry3, material)
-        text.position.set(10, 5, 7);
+        text3.position.set(10, 5, 7);
         scene.add(text3); 
 
         const text4 = new THREE.Mesh(textGeometry4, material)
-        text.position.set(10, -3, 7);
+        text4.position.set(10, -3, 7);
         scene.add(text4); 
 
     })
