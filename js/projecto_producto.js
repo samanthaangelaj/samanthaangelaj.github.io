@@ -29,7 +29,7 @@ function init() {
 
     // Instanciar la camara
     camera= new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,100);
-    camera.position.set(0,3,15);
+    camera.position.set(0,3,18);
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0); 
@@ -172,7 +172,7 @@ function loadScene() {
         });
         
         const text1 = new THREE.Mesh(textGeometry1, material);
-        text1.position.set(-10, 5, 7);
+        text1.position.set(-8, 5, 7);
         scene.add(text1);
 
         const text2 = new THREE.Mesh(textGeometry2, material); 
@@ -180,11 +180,11 @@ function loadScene() {
         scene.add(text2); 
 
         const text3 = new THREE.Mesh(textGeometry3, material)
-        text3.position.set(10, 5, 7);
+        text3.position.set(8, 5, 7);
         scene.add(text3); 
 
         const text4 = new THREE.Mesh(textGeometry4, material)
-        text4.position.set(10, -3, 7);
+        text4.position.set(7, -3, 7);
         scene.add(text4); 
 
     })
