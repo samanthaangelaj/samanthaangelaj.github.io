@@ -119,7 +119,7 @@ function loadScene() {
 
         // Create and position sphere
         const geoEsfera = new THREE.SphereGeometry(sphereSize, 20, 20);
-        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial2);
+        const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial);
         esfera.position.set(randomX, floorHeight + sphereSize / 2, randomZ); // Set position above the floor
         scene.add(esfera);
     }
@@ -176,7 +176,7 @@ function loadScene() {
         
         const text1 = new THREE.Mesh(textGeometry1, material);
         text.position.set(-10, 5, 7);
-        scene.add(text);
+        scene.add(text1);
 
         const text2 = new THREE.Mesh(textGeometry2, material); 
         text.position.set(-10, -3, 7);
