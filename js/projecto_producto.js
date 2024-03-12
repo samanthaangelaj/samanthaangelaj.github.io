@@ -72,21 +72,6 @@ function loadScene() {
         envMap: reflectionCube // Apply environment mapping for reflections
     });
 
-    // Add fixed position spheres in corners with bubble-like effect
-    //const cornerPositions = [
-        //new THREE.Vector3(-10, 5, 7),
-        //new THREE.Vector3(-10, -3, 7),
-        //new THREE.Vector3(10, 5, 7),
-        //new THREE.Vector3(10, -3, 7),
-    // ];
-    //const mediumSize = 1.0;
-    // cornerPositions.forEach(position => {
-    //     const geoEsfera = new THREE.SphereGeometry(mediumSize, 32, 32);
-    //     const esfera = new THREE.Mesh(geoEsfera, bubbleMaterial); // Use bubble-like material
-    //     esfera.position.copy(position);
-    //     scene.add(esfera);
-    // });
-
      // Material for the random spheres
      const bubbleMaterial2 = new THREE.MeshPhongMaterial({
         color: 0xFFFFFF, // White color
@@ -155,6 +140,18 @@ function loadScene() {
         });
 
         const textGeometry3 = new THREE.TextGeometry("BUY TICKETS", {
+        font,
+        size: 0.5,
+        height: 0.2,
+        curveSegments: 3,
+        bevelEnabled: true,
+        bevelThickness: 0.03,
+        bevelSize: 0.04,
+        bevelOffset: 0,
+        bevelSegments: 8
+        });
+
+        const textGeometry4 = new THREE.TextGeometry("MAP & DIRECTIONS", {
         font,
         size: 0.5,
         height: 0.2,
@@ -237,9 +234,9 @@ function loadScene() {
     video.muted = true;
     video.play();
     const texvideo = new THREE.VideoTexture(video);
-    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(20,9,5,5), 
+    const pantalla = new THREE.Mesh(new THREE.PlaneGeometry(30,12,7,7), 
                                     new THREE.MeshBasicMaterial({map:texvideo}));
-    pantalla.position.set(0,4.5,-5);
+    pantalla.position.set(0,4.5,-7);
     scene.add(pantalla);
 
 }
