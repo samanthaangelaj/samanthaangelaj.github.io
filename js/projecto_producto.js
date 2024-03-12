@@ -9,6 +9,11 @@ let cameraControls;
 let floor;
 let rotationSpeed = 0.01;
 
+let textMesh1, textMesh2, textMesh3, textMesh4;
+let scaleFactor = 0.01;
+let scaleDirection = 1;
+
+
 // Acciones
 init();
 loadScene();
@@ -111,7 +116,6 @@ function loadScene() {
     }
 
     //text
-     
     const fontLoader = new THREE.FontLoader();
     fontLoader.load(
     "/fonts/helvetiker_bold.typeface.json",
@@ -188,7 +192,23 @@ function loadScene() {
         text4.position.set(7, -3, 7);
         scene.add(text4); 
 
-    })
+        // Create text meshes
+        textMesh1 = new THREE.Mesh(textGeometry1, material);
+        textMesh1.position.set(-12, 5, 7);
+        scene.add(textMesh1);
+
+        textMesh2 = new THREE.Mesh(textGeometry2, material);
+        textMesh2.position.set(-15, -3, 7);
+        scene.add(textMesh2);
+
+        textMesh3 = new THREE.Mesh(textGeometry3, material);
+        textMesh3.position.set(8, 5, 7);
+        scene.add(textMesh3);
+
+        textMesh4 = new THREE.Mesh(textGeometry4, material);
+        textMesh4.position.set(7, -3, 7);
+        scene.add(textMesh4);
+    });
 
     scene.add(new THREE.AxesHelper(3));
 
@@ -280,6 +300,20 @@ function update() {
     angulo += rotationSpeed; // Update angle with rotation speed
     if (floor){
         floor.rotation.y = angulo; // Rotate the floor
+
+    if (textMesh1 && textMesh2 && textMesh3 && textMesh4) {
+        textMesh1.scale.set(1 + scaleFactor, 1 + scaleFactor, 1 + scaleFactor);
+        textMesh2.scale.set(1 + scaleFactor, 1 + scaleFactor, 1 + scaleFactor);
+        textMesh3.scale.set(1 + scaleFactor, 1 + scaleFactor, 1 + scaleFactor);
+        textMesh4.scale.set(1 + scaleFactor, 1 + scaleFactor, 1 + scaleFactor);
+    
+        // Update scale factor and direction
+        scaleFactor += 0.01 * scaleDirection;
+        if (scaleFactor >= 0.05 || scaleFactor <= -0.05) {
+            scaleDirection *= -1;
+        }
+    }
+
 }}
 
 function render() {
