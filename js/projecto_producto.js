@@ -128,7 +128,7 @@ function loadScene() {
     }
 
     //text
-
+     
     // const fontLoader = new THREE.FontLoader();
     // fontLoader.load(
     // "/fonts/helvetiker_bold.typeface.json",
@@ -217,12 +217,13 @@ function setupGUI(){
 	};
 
 	// Creacion interfaz
-	//const gui = new THREE.gui;
+	const gui2 = lil.GUI;
+    const gui = new gui2(); 
 
     // Construccion del menu
-	const h = THREE.gui.addFolder("Control esferaCubo");
+	const h = gui.addFolder("Control esferaCubo");
 	h.add(effectController, "mensaje").name("Aftermovie 2023");
-    const videofolder = THREE.gui.addFolder("Control video");
+    const videofolder = gui.addFolder("Control video");
     videofolder.add(effectController,"mute").onChange(v=>{video.muted = v});
 	videofolder.add(effectController,"play");
 	videofolder.add(effectController,"pause");
