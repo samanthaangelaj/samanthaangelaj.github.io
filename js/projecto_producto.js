@@ -76,7 +76,7 @@ function loadScene() {
 
     // Add fixed position spheres in corners with bubble-like effect
     const cornerPositions = [
-        new THREE.Vector3(-10, 5, 7),
+        //new THREE.Vector3(-10, 5, 7),
         new THREE.Vector3(-10, -3, 7),
         new THREE.Vector3(10, 5, 7),
         new THREE.Vector3(10, -3, 7),
@@ -151,6 +151,7 @@ function loadScene() {
         matcap: matcapTexture
         });
         const text = new THREE.Mesh(textGeometry, material);
+        text.position.set(-10, 5, 7);
         scene.add(text);
     })
 
@@ -210,7 +211,7 @@ function setupGUI(){
 
     // Definicion de los controles
 	effectController = {
-		mensaje: 'Aftermovue 2023',
+		//mensaje: 'Aftermovue 2023',
 		play: function(){video.play();},
 		pause: function(){video.pause();},
         mute: true,
@@ -221,9 +222,7 @@ function setupGUI(){
     const gui = new gui2(); 
 
     // Construccion del menu
-	const h = gui.addFolder("Control esferaCubo");
-	h.add(effectController, "mensaje").name("Aftermovie 2023");
-    const videofolder = gui.addFolder("Control video");
+    const videofolder = gui.addFolder("Control Aftermovie 2023");
     videofolder.add(effectController,"mute").onChange(v=>{video.muted = v});
 	videofolder.add(effectController,"play");
 	videofolder.add(effectController,"pause");
