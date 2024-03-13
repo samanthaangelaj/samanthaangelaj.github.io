@@ -226,7 +226,7 @@ function loadScene() {
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        text5.position.set(-10, -7, 7); 
+        text5.position.set(8, 2, 0); 
         floor.add(text5); 
 
 
@@ -348,9 +348,9 @@ function loadScene() {
     });
 
     glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 0;
-        gltf.scene.position.x = 0;
-        gltf.scene.position.z = -10; 
+        gltf.scene.position.y = -7;
+        gltf.scene.position.x = -10;
+        gltf.scene.position.z = -7; 
         //gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale
@@ -369,17 +369,6 @@ function loadScene() {
     }, undefined, function ( error ) {
         console.error(error);
     });
-
-    // //Load fern grass
-    // glloader.load('models/fern_grass_02/scene.gltf', function(gltf) {
-    //     gltf.scene.position.y = 3;
-    //     gltf.scene.rotation.y = -Math.PI/2;
-    //     floor.add(gltf.scene);
-    //     console.log("GRASS 1");
-    //     console.log(gltf);
-    // }, undefined, function ( error ) {
-    //     console.error(error);
-    // });
 
     // Habitacion
     const paredes = [];
