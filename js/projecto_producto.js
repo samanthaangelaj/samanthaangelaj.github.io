@@ -220,6 +220,8 @@ function loadScene() {
         scene.add(text5); 
 
         // Wrap text around a cylinder
+        const radius = 5; 
+        const height = 5; 
         const curve = new THREE.CatmullRomCurve3([
             new THREE.Vector3(radius, 0, 0),
             new THREE.Vector3(radius, height, 0),
