@@ -238,8 +238,6 @@ function loadScene() {
             textMeshfloor.geometry.vertices[i].z = points[i].z;
         }
 
-        return textMeshfloor;
-        // Usage
         const textMeshfloor = createRoundedText("Baja Beach", 10, 0, 100, 0.03, 0.04, 8); // Adjust radius and height as needed
         textMeshfloor.position.set(5, 0, 0); // Set position as needed
         floor.add(textMeshfloor);
