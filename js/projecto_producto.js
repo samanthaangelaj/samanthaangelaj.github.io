@@ -226,7 +226,7 @@ function loadScene() {
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        text5.position.set(5, 2, 0); 
+        text5.position.set(5, -3, 0); 
         text5.rotation.y = (-Math.PI/2)*3;
         floor.add(text5); 
 
@@ -273,7 +273,7 @@ function loadScene() {
 
     glloader.load('models/alien_flower/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
-        gltf.scene.position.x = 2;
+        gltf.scene.position.x = 3;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
         console.log("FLOWERS 2");
@@ -328,7 +328,7 @@ function loadScene() {
 
     glloader.load('models/lowpoly_hibiscus_flower/scene.gltf', function(gltf) {
         gltf.scene.position.y = 2;
-        gltf.scene.position.x = 3;
+        gltf.scene.position.x = 1;
         gltf.scene.rotation.y =(-Math.PI/2)*3;
 
         // Set desired scale
