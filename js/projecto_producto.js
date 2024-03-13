@@ -226,7 +226,7 @@ function loadScene() {
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        text5.position.set(8, 2, 0); 
+        text5.position.set(5, 2, 0); 
         text5.rotation.y = (-Math.PI/2)*3;
         floor.add(text5); 
 
@@ -305,7 +305,7 @@ function loadScene() {
     });
 
     glloader.load('models/monarch_butterfly/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 5;
+        gltf.scene.position.y = 10;
         gltf.scene.position.x = -5;
         gltf.scene.rotation.y = -Math.PI/2;
 
@@ -328,7 +328,7 @@ function loadScene() {
 
     glloader.load('models/lowpoly_hibiscus_flower/scene.gltf', function(gltf) {
         gltf.scene.position.y = 2;
-        gltf.scene.position.x = 7;
+        gltf.scene.position.x = 3;
         gltf.scene.rotation.y =(-Math.PI/2)*3;
 
         // Set desired scale
