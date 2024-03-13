@@ -215,35 +215,11 @@ function loadScene() {
         textMesh4.position.set(8, -4, 7);
         scene.add(textMesh4);
 
-        // const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        // text5.position.set(-10, -7, 7); 
-        // scene.add(text5); 
+        const text5 = new THREE.Mesh(textGeometry5, materialnr7);
+        text5.position.set(-10, -7, 7); 
+        floor.add(text5); 
 
-        const textMeshfloor = new THREE.Mesh(textGeometry5, materialnr7);
 
-        // Wrap text around a cylinder
-        const radius = 5; 
-        const height = 5; 
-        const curve = new THREE.CatmullRomCurve3([
-            new THREE.Vector3(radius, 0, 0),
-            new THREE.Vector3(radius, height, 0),
-            new THREE.Vector3(-radius, height, 0),
-            new THREE.Vector3(-radius, 0, 0),
-            new THREE.Vector3(radius, 0, 0)
-        ]);
-
-        const curveSegments = 12;
-        const points = curve.getPoints(curveSegments);
-
-        for (let i = 0; i < points.length; i++) {
-            textMeshfloor.geometry.vertices[i].x = points[i].x;
-            textMeshfloor.geometry.vertices[i].y = points[i].y;
-            textMeshfloor.geometry.vertices[i].z = points[i].z;
-        }
-
-        textMeshfloor = createRoundedText("Baja Beach", 10, 0, 100, 0.03, 0.04, 8); // Adjust radius and height as needed
-        textMeshfloor.position.set(5, 0, 0); // Set position as needed
-        floor.add(textMeshfloor);
     });
 
     //scene.add(new THREE.AxesHelper(3));
