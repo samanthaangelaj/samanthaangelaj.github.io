@@ -229,7 +229,8 @@ function loadScene() {
             new THREE.Vector3(-radius, 0, 0),
             new THREE.Vector3(radius, 0, 0)
         ]);
-
+        
+        const curveSegments = 12;
         const points = curve.getPoints(curveSegments);
 
         for (let i = 0; i < points.length; i++) {
