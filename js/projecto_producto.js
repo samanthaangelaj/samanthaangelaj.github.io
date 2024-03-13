@@ -347,14 +347,14 @@ function loadScene() {
     puntual.position.set(0,0,0); 
     scene.add(puntual); 
 
-    glloader.load('models/duck_ring/scene.gltf', function(gltf) {
+    glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.position.x = 0;
         gltf.scene.position.z = -10; 
         //gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale
-        const desiredScale = 0.05; // Adjust as needed
+        const desiredScale = 1; // Adjust as needed
 
         // Traverse through all meshes in the loaded GLTF object and set scale
         gltf.scene.traverse(child => {

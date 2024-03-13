@@ -1,0 +1,11 @@
+Model Information:
+* title:	Yellow duck
+* source:	https://sketchfab.com/3d-models/yellow-duck-3b0168f8cc9e4d739d5f7c5165cc706d
+* author:	systemmanager (https://sketchfab.com/systemmanager)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Yellow duck" (https://sketchfab.com/3d-models/yellow-duck-3b0168f8cc9e4d739d5f7c5165cc706d) by systemmanager (https://sketchfab.com/systemmanager) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
