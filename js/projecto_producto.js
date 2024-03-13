@@ -170,8 +170,8 @@ function loadScene() {
 
         const textGeometry5 = new THREE.TextGeometry("Baja Beach Fest 2024", {
         font,
-        size: 1.5,
-        height: 0.5,
+        size: 1,
+        height: 0.3,
         curveSegments: 3,
         bevelEnabled: true,
         bevelThickness: 0.03,
@@ -188,7 +188,7 @@ function loadScene() {
         const textureLoader2 = new THREE.TextureLoader(); 
         const matcapTexture2 = textureLoader2.load("/images/7.png");
         const materialnr7 = new THREE.MeshMatcapMaterial({
-        matcap: matcapTexture
+        matcap: matcapTexture2
         });
 
         const material = new THREE.MeshMatcapMaterial({
@@ -216,7 +216,7 @@ function loadScene() {
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        text5.position.set(-5, -7, 7); 
+        text5.position.set(-10, -7, 7); 
         scene.add(text5); 
 
     });
@@ -281,12 +281,23 @@ function loadScene() {
         console.error(error);
     });
 
-    glloader.load('models/rainbow_butterfly/scene.gltf', function(gltf) {
+    glloader.load('models/monarch_butterfly/scene.gltf', function(gltf) {
         gltf.scene.position.y = 5;
         gltf.scene.position.x = -5;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
-        console.log("FLOWERS 3");
+        console.log("BUTTERFLY 1");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    glloader.load('models/lowpoly_hibiscus_flower/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 2;
+        gltf.scene.position.x = 7;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add(gltf.scene);
+        console.log("FLOWERS 4");
         console.log(gltf);
     }, undefined, function ( error ) {
         console.error(error);
