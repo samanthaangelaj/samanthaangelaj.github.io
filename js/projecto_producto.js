@@ -227,7 +227,7 @@ function loadScene() {
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
         text5.position.set(8, 2, 0); 
-        text5.scene.rotation.y = -Math.PI/2;
+        text5.rotation.y = -Math.PI/2;
         floor.add(text5); 
 
 
@@ -329,7 +329,7 @@ function loadScene() {
     glloader.load('models/lowpoly_hibiscus_flower/scene.gltf', function(gltf) {
         gltf.scene.position.y = 2;
         gltf.scene.position.x = 7;
-        //gltf.scene.rotation.y = -Math.PI/2;
+        gltf.scene.rotation.y =(-Math.PI/2)*3;
 
         // Set desired scale
         const desiredScale = 4; // Adjust as needed
@@ -349,9 +349,9 @@ function loadScene() {
     });
 
     glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
-        gltf.scene.position.y = -4;
-        gltf.scene.position.x = 8;
-        gltf.scene.position.z = -7; 
+        gltf.scene.position.y = -6;
+        gltf.scene.position.x = 6;
+        gltf.scene.position.z = 10; 
         //gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale
