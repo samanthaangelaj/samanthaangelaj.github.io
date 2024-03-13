@@ -204,7 +204,7 @@ function loadScene() {
         scene.add(textMesh1);
 
         textMesh2 = new THREE.Mesh(textGeometry2, material);
-        textMesh2.position.set(7, 0, 7);
+        textMesh2.position.set(8, -1, 7);
         scene.add(textMesh2);
 
         textMesh3 = new THREE.Mesh(textGeometry3, material);
@@ -212,7 +212,7 @@ function loadScene() {
         scene.add(textMesh3);
 
         textMesh4 = new THREE.Mesh(textGeometry4, material);
-        textMesh4.position.set(7, -3, 7);
+        textMesh4.position.set(8, -4, 7);
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
@@ -296,6 +296,17 @@ function loadScene() {
         gltf.scene.position.y = 5;
         gltf.scene.position.x = -5;
         gltf.scene.rotation.y = -Math.PI/2;
+
+        // Set desired scale
+        const desiredScale = 7; // Adjust as needed
+
+        // Traverse through all meshes in the loaded GLTF object and set scale
+        gltf.scene.traverse(child => {
+            if (child.isMesh) {
+                child.scale.set(desiredScale, desiredScale, desiredScale);
+            }
+        });
+
         floor.add(gltf.scene);
         console.log("BUTTERFLY 1");
         console.log(gltf);
@@ -344,7 +355,7 @@ function loadScene() {
     paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negyp.bmp")}));
     paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"poszp.bmp")}));
     paredes.push(new THREE.MeshBasicMaterial({side: THREE.BackSide, map: new THREE.TextureLoader().load(path+"negzp.bmp")}));
-    const habitacion = new THREE.Mesh(new THREE.BoxGeometry(40, 40, 40), paredes);
+    const habitacion = new THREE.Mesh(new THREE.BoxGeometry(55, 55, 55), paredes);
     scene.add(habitacion);
 
     // Cine
@@ -396,7 +407,7 @@ function update() {
         textMesh4.scale.set(1 + scaleFactor, 1 + scaleFactor, 1 + scaleFactor);
     
         // Update scale factor and direction
-        scaleFactor += 0.01 * scaleDirection;
+        scaleFactor += 0.005 * scaleDirection;
         if (scaleFactor >= 0.05 || scaleFactor <= -0.05) {
             scaleDirection *= -1;
         }
