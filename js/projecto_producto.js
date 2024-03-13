@@ -305,7 +305,7 @@ function loadScene() {
         gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale
-        const desiredScale = 7; // Adjust as needed
+        const desiredScale = 20; // Adjust as needed
 
         // Traverse through all meshes in the loaded GLTF object and set scale
         gltf.scene.traverse(child => {
@@ -338,6 +338,28 @@ function loadScene() {
 
         floor.add(gltf.scene);
         console.log("FLOWERS 4");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    glloader.load('models/duck_floaty/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 0;
+        gltf.scene.position.x = 0;
+        //gltf.scene.rotation.y = -Math.PI/2;
+
+        // Set desired scale
+        const desiredScale = 1; // Adjust as needed
+
+        // Traverse through all meshes in the loaded GLTF object and set scale
+        gltf.scene.traverse(child => {
+            if (child.isMesh) {
+                child.scale.set(desiredScale, desiredScale, desiredScale);
+            }
+        });
+
+        scene.add(gltf.scene);
+        console.log("DUCK 1");
         console.log(gltf);
     }, undefined, function ( error ) {
         console.error(error);
