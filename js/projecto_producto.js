@@ -343,6 +343,10 @@ function loadScene() {
         console.error(error);
     });
 
+    const puntual = new THREE.PointLight(0xFFFFF, 0.5); 
+    puntual.position.set(0,0,0); 
+    scene.add(puntual); 
+
     glloader.load('models/duck_floaty/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.position.x = 0;
