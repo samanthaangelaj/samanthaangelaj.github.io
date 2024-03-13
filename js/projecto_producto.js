@@ -226,7 +226,7 @@ function loadScene() {
         scene.add(textMesh4);
 
         const text5 = new THREE.Mesh(textGeometry5, materialnr7);
-        text5.position.set(5, 2, 5); 
+        text5.position.set(5, 2, 7); 
         text5.rotation.y = (-Math.PI/2)*3;
         floor.add(text5); 
 
