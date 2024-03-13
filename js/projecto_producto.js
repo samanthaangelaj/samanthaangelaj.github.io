@@ -51,12 +51,18 @@ function init() {
 function loadScene() {
 
     const path = "./images/";
-    const material = new THREE.MeshBasicMaterial({ color: 0x9CE648, side: THREE.DoubleSide });
+    //const material = new THREE.MeshBasicMaterial({ color: 0x9CE648, side: THREE.DoubleSide });
+
+    const textureLoader0 = new THREE.TextureLoader(); 
+        const matcapTexture0 = textureLoader0.load("/images/sand.jpg");
+        const materialsand = new THREE.MeshMatcapMaterial({
+        matcap: matcapTexture0
+        });
 
     // Suelo
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
     suelo.rotateX(-Math.PI / 2); // Rotate the geometry to make it horizontal
-    floor = new THREE.Mesh(suelo, material);
+    floor = new THREE.Mesh(suelo, materialsand);
     floor.position.set(-15,-4,-4)
     scene.add(floor);
     floor.name = 'floor';
