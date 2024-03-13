@@ -168,7 +168,7 @@ function loadScene() {
         bevelSegments: 8
         });
 
-        const textGeometry5 = new THREE.TextGeometry("Baja Beach Fest 2025", {
+        const textGeometry5 = new THREE.TextGeometry("Baja Beach Fest 2024", {
         font,
         size: 0.5,
         height: 0.2,
