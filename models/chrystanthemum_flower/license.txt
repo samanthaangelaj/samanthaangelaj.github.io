@@ -1,0 +1,11 @@
+Model Information:
+* title:	Chrystanthemum flower
+* source:	https://sketchfab.com/3d-models/chrystanthemum-flower-a026f13cdd6c4e7f9f89c82731d7bfa3
+* author:	Lassi Kaukonen (https://sketchfab.com/thesidekick)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Chrystanthemum flower" (https://sketchfab.com/3d-models/chrystanthemum-flower-a026f13cdd6c4e7f9f89c82731d7bfa3) by Lassi Kaukonen (https://sketchfab.com/thesidekick) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

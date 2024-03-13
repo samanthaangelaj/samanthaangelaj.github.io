@@ -192,26 +192,6 @@ function loadScene() {
         const emissiveColor = new THREE.Color(0xff0000);
         const emissiveMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, emissive: emissiveColor, emissiveIntensity: 1 });
         
-        // const text1 = new THREE.Mesh(textGeometry1, material);
-        // text1.position.set(-12, 5, 7);
-        // scene.add(text1);
-
-        // const text2 = new THREE.Mesh(textGeometry2, material); 
-        // text2.position.set(-15, -3, 7);
-        // scene.add(text2); 
-
-        // const text3 = new THREE.Mesh(textGeometry3, material)
-        // text3.position.set(8, 5, 7);
-        // scene.add(text3); 
-
-        // const text4 = new THREE.Mesh(textGeometry4, material)
-        // text4.position.set(7, -3, 7);
-        // scene.add(text4); 
-
-        // const text5 = new THREE.Mesh(textGeometry4, emissiveMaterial)
-        // text4.position.set(-2, 5, 7);
-        // scene.add(text4);
-
         // Create text meshes
         textMesh1 = new THREE.Mesh(textGeometry1, material);
         textMesh1.position.set(-12, 5, 7);
@@ -228,6 +208,11 @@ function loadScene() {
         textMesh4 = new THREE.Mesh(textGeometry4, material);
         textMesh4.position.set(7, -3, 7);
         scene.add(textMesh4);
+
+        const text5 = new THREE.Mesh(textGeometry5, emissiveMaterial);
+        text5.position.set(-2, 5, 7); 
+        scene.add(text5); 
+
     });
 
     scene.add(new THREE.AxesHelper(3));
@@ -252,6 +237,28 @@ function loadScene() {
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
         console.log("FLOWERS 1");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    glloader.load('models/alien_flower/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 0;
+        gltf.scene.position.x = 2;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add(gltf.scene);
+        console.log("FLOWERS 2");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    glloader.load('models/simple_flower_loop/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 0;
+        gltf.scene.position.x = -3;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add(gltf.scene);
+        console.log("FLOWERS 3");
         console.log(gltf);
     }, undefined, function ( error ) {
         console.error(error);

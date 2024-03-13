@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien Flower
+* source:	https://sketchfab.com/3d-models/alien-flower-b75df2333b914f529058134e9e3fadac
+* author:	ratbags (https://sketchfab.com/ratbags)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien Flower" (https://sketchfab.com/3d-models/alien-flower-b75df2333b914f529058134e9e3fadac) by ratbags (https://sketchfab.com/ratbags) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

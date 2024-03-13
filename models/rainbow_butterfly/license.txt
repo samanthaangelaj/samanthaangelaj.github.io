@@ -1,0 +1,11 @@
+Model Information:
+* title:	rainbow butterfly
+* source:	https://sketchfab.com/3d-models/rainbow-butterfly-17ed5043503846d1a5174875384d9df8
+* author:	chelenguu (https://sketchfab.com/wuheppost)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "rainbow butterfly" (https://sketchfab.com/3d-models/rainbow-butterfly-17ed5043503846d1a5174875384d9df8) by chelenguu (https://sketchfab.com/wuheppost) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
