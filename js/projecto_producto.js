@@ -348,8 +348,8 @@ function loadScene() {
     });
 
     glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
-        gltf.scene.position.y = -7;
-        gltf.scene.position.x = -10;
+        gltf.scene.position.y = -4;
+        gltf.scene.position.x = 8;
         gltf.scene.position.z = -7; 
         //gltf.scene.rotation.y = -Math.PI/2;
 
