@@ -350,7 +350,6 @@ function animate() {
 
 function animate2(event){
     // Capturar y normalizar
-    console.log("maldito");
     let x= event.clientX;
     let y = event.clientY;
     x = ( x / window.innerWidth ) * 2 - 1;
@@ -363,8 +362,6 @@ function animate2(event){
     let intersecciones = rayo.intersectObjects(floor.children,true);
 
     if( intersecciones.length > 0 ){
-        console.log("porfis");
-
         rotationSpeed = 0.1;
     }
 }
