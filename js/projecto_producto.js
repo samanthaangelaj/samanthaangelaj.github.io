@@ -347,6 +347,10 @@ function loadScene() {
     puntual.position.set(0,0,0); 
     scene.add(puntual); 
 
+    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
+    direccional.position.set(0, 0, 10);
+    direccional.castShadow = true;
+
     glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.position.x = 0;
