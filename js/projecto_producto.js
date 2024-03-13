@@ -34,7 +34,7 @@ function init() {
 
     // Instanciar la camara
     camera= new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,100);
-    camera.position.set(0,2.5,18);
+    camera.position.set(0,2.5,21);
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0); 
@@ -347,9 +347,10 @@ function loadScene() {
     puntual.position.set(0,0,0); 
     scene.add(puntual); 
 
-    glloader.load('models/duck_floaty/scene.gltf', function(gltf) {
+    glloader.load('models/duck_ring/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.position.x = 0;
+        gltf.scene.position.z = -10; 
         //gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale

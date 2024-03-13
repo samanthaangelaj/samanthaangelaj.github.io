@@ -1,0 +1,11 @@
+Model Information:
+* title:	Duck Ring
+* source:	https://sketchfab.com/3d-models/duck-ring-bdc9ff9778da47bdb04c61b7002d6672
+* author:	Zainal Abd. Kahar (https://sketchfab.com/zsuperxtreme)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Duck Ring" (https://sketchfab.com/3d-models/duck-ring-bdc9ff9778da47bdb04c61b7002d6672) by Zainal Abd. Kahar (https://sketchfab.com/zsuperxtreme) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
