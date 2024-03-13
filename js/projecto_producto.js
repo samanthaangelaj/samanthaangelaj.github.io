@@ -354,7 +354,7 @@ function loadScene() {
         //gltf.scene.rotation.y = -Math.PI/2;
 
         // Set desired scale
-        const desiredScale = 1; // Adjust as needed
+        const desiredScale = 0.05; // Adjust as needed
 
         // Traverse through all meshes in the loaded GLTF object and set scale
         gltf.scene.traverse(child => {
