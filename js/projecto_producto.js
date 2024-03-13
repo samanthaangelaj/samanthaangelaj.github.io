@@ -38,7 +38,7 @@ function init() {
     cameraControls = new THREE.OrbitControls( camera, renderer.domElement );
     cameraControls.target.set(0,1,0);
     cameraControls.minDistance = 10; //limit zoom in
-    cameraControls.maxDistance = 43; //limit zoom out 
+    cameraControls.maxDistance = 35; //limit zoom out 
     camera.lookAt(0,1,0); 
     
     // Ambient light
