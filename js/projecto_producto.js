@@ -257,16 +257,16 @@ function loadScene() {
         console.error(error);
     });
 
-    //Load fern grass
-    glloader.load('models/fern_grass_02/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 3;
-        gltf.scene.rotation.y = -Math.PI/2;
-        floor.add(gltf.scene);
-        console.log("GRASS 1");
-        console.log(gltf);
-    }, undefined, function ( error ) {
-        console.error(error);
-    });
+    // //Load fern grass
+    // glloader.load('models/fern_grass_02/scene.gltf', function(gltf) {
+    //     gltf.scene.position.y = 3;
+    //     gltf.scene.rotation.y = -Math.PI/2;
+    //     floor.add(gltf.scene);
+    //     console.log("GRASS 1");
+    //     console.log(gltf);
+    // }, undefined, function ( error ) {
+    //     console.error(error);
+    // });
 
     // Habitacion
     const paredes = [];
