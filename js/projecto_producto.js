@@ -190,7 +190,7 @@ function loadScene() {
         });
 
         const emissiveColor = new THREE.Color(0xff0000);
-        const emissiveMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, emissive: emissiveColor, emissiveIntensity: 1 });
+        const emissiveMaterial = new THREE.MeshBasicMaterial({ color: 0xFF007E, emissive: emissiveColor, emissiveIntensity: 1 });
         
         // Create text meshes
         textMesh1 = new THREE.Mesh(textGeometry1, material);
@@ -224,6 +224,17 @@ function loadScene() {
     glloader.load('models/palm_tree/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.rotation.y = -Math.PI/2;
+
+        // Set desired scale
+        const desiredScale = 3; // Adjust as needed
+
+        // Traverse through all meshes in the loaded GLTF object and set scale
+        gltf.scene.traverse(child => {
+            if (child.isMesh) {
+                child.scale.set(desiredScale, desiredScale, desiredScale);
+            }
+        });
+
         floor.add(gltf.scene);
         console.log("PALM");
         console.log(gltf);
@@ -243,7 +254,7 @@ function loadScene() {
     });
 
     glloader.load('models/alien_flower/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 0;
+        gltf.scene.position.y = 2;
         gltf.scene.position.x = 2;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
@@ -256,6 +267,17 @@ function loadScene() {
     glloader.load('models/simple_flower_loop/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
         gltf.scene.position.x = -3;
+        gltf.scene.rotation.y = -Math.PI/2;
+        floor.add(gltf.scene);
+        console.log("FLOWERS 3");
+        console.log(gltf);
+    }, undefined, function ( error ) {
+        console.error(error);
+    });
+
+    glloader.load('models/rainbow_butterfly/scene.gltf', function(gltf) {
+        gltf.scene.position.y = 5;
+        gltf.scene.position.x = -5;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
         console.log("FLOWERS 3");
