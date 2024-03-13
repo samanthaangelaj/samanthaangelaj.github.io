@@ -39,10 +39,14 @@ function init() {
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0); 
     
-    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-    direccional.position.set(-1,1,-1);
-    direccional.castShadow = true;
-    scene.add(direccional);
+    // Ambient light
+    const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.5); // Soft white light
+    scene.add(ambientLight);
+
+    // Directional light
+    const directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.5); // White light
+    directionalLight.position.set(-1, 1, -1);
+    scene.add(directionalLight);
 
     renderer.domElement.addEventListener('dblclick', animate2);
 
@@ -342,14 +346,6 @@ function loadScene() {
     }, undefined, function ( error ) {
         console.error(error);
     });
-
-    const puntual = new THREE.PointLight(0xFFFFF, 0.5); 
-    puntual.position.set(0,0,0); 
-    scene.add(puntual); 
-
-    const direccional = new THREE.DirectionalLight(0xFFFFFF,0.3);
-    direccional.position.set(0, 0, 10);
-    direccional.castShadow = true;
 
     glloader.load('models/yellow_duck/scene.gltf', function(gltf) {
         gltf.scene.position.y = 0;
