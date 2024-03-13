@@ -57,7 +57,7 @@ function loadScene() {
     const suelo = new THREE.CircleGeometry(10, 100); // Increase segments for smoother appearance
     suelo.rotateX(-Math.PI / 2); // Rotate the geometry to make it horizontal
     floor = new THREE.Mesh(suelo, material);
-    floor.position.set(0,-4,-4)
+    floor.position.set(-15,-4,-4)
     scene.add(floor);
     floor.name = 'floor';
 
@@ -200,15 +200,15 @@ function loadScene() {
         
         // Create text meshes
         textMesh1 = new THREE.Mesh(textGeometry1, material);
-        textMesh1.position.set(-12, 5, 7);
+        textMesh1.position.set(8, 5, 7);
         scene.add(textMesh1);
 
         textMesh2 = new THREE.Mesh(textGeometry2, material);
-        textMesh2.position.set(-15, -3, 7);
+        textMesh2.position.set(7, 0, 7);
         scene.add(textMesh2);
 
         textMesh3 = new THREE.Mesh(textGeometry3, material);
-        textMesh3.position.set(8, 5, 7);
+        textMesh3.position.set(8, 2, 7);
         scene.add(textMesh3);
 
         textMesh4 = new THREE.Mesh(textGeometry4, material);
@@ -260,7 +260,7 @@ function loadScene() {
     });
 
     glloader.load('models/alien_flower/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 2;
+        gltf.scene.position.y = 0;
         gltf.scene.position.x = 2;
         gltf.scene.rotation.y = -Math.PI/2;
         floor.add(gltf.scene);
@@ -271,9 +271,20 @@ function loadScene() {
     });
 
     glloader.load('models/simple_flower_loop/scene.gltf', function(gltf) {
-        gltf.scene.position.y = 0;
+        gltf.scene.position.y = 3;
         gltf.scene.position.x = -3;
         gltf.scene.rotation.y = -Math.PI/2;
+
+        // Set desired scale
+        const desiredScale = 3; // Adjust as needed
+
+        // Traverse through all meshes in the loaded GLTF object and set scale
+        gltf.scene.traverse(child => {
+            if (child.isMesh) {
+                child.scale.set(desiredScale, desiredScale, desiredScale);
+            }
+        });
+
         floor.add(gltf.scene);
         console.log("FLOWERS 3");
         console.log(gltf);
@@ -296,6 +307,17 @@ function loadScene() {
         gltf.scene.position.y = 2;
         gltf.scene.position.x = 7;
         gltf.scene.rotation.y = -Math.PI/2;
+
+        // Set desired scale
+        const desiredScale = 4; // Adjust as needed
+
+        // Traverse through all meshes in the loaded GLTF object and set scale
+        gltf.scene.traverse(child => {
+            if (child.isMesh) {
+                child.scale.set(desiredScale, desiredScale, desiredScale);
+            }
+        });
+
         floor.add(gltf.scene);
         console.log("FLOWERS 4");
         console.log(gltf);
